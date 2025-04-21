@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/BlogLayout.astro
 title: Guerrilla Open Manifesto 
-description: The Guerilla Open Access Manifesto is a document published by o) Aaron Swartz
+description: The Guerilla Open Access Manifesto is a document published by Aaron Swartz
 tags: ["manifesto", "activism", "science"]
 time: 7 
 featured: true
@@ -9,9 +9,9 @@ timestamp: 2025-04-15T01:37:02+00:00
 filename: guerrilla-open-manifesto 
 ---
 
- Information is power. But like all power, there are those who want to keep it for themselves. The world's entire scientific and cultural heritage, published over centuries in books and journals, is increasingly being digitized and locked up by a handful of private corporations. Want to read the papers featuring the most famous results of the sciences? You'll need to send enormous amounts to publishers like Reed Elsevier.
+Information is power. But like all power, there are those who want to keep it for themselves. The world's entire scientific and cultural heritage, published over centuries in books and journals, is increasingly being digitized and locked up by a handful of private corporations. Want to read the papers featuring the most famous results of the sciences? You'll need to send enormous amounts to publishers like Reed Elsevier.
 
- There are those struggling to change this. The Open Access Movement has fought  valiantly to ensure that scientists do not sign their copyrights away but instead ensure their work is published on the Internet, under terms that allow anyone to access it. But even under the best scenarios, their work will only apply to things published in the future.  Everything up until now will have been lost.
+There are those struggling to change this. The Open Access Movement has fought  valiantly to ensure that scientists do not sign their copyrights away but instead ensure their work is published on the Internet, under terms that allow anyone to access it. But even under the best scenarios, their work will only apply to things published in the future.  Everything up until now will have been lost.
 
 That is too high a price to pay. Forcing academics to pay money to read the work of their colleagues? Scanning entire libraries but only allowing the folks at Google to read them?  Providing scientific articles to those at elite universities in the First World, but not to children in the Global South? It's outrageous and unacceptable.
 
@@ -31,6 +31,6 @@ We need to take information, wherever it is stored, make our copies and share th
 
 With enough of us, around the world, we'll not just send a strong message opposing the privatization of knowledge — we'll make it a thing of the past.
 
-Will you join us?
-Aaron Swartz
+Will you join us?<br />
+Aaron Swartz<br />
 July 2008, Eremo, Italy

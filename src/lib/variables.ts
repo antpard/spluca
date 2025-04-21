@@ -6,20 +6,22 @@ export const GLOBAL = {
   rootUrl: "https://spluca.org",
   shortDescription: "Systems Engineer",
   longDescription: "A systems engineer with nearly 20 years of experience",
-  
+
   // Social media links
   githubProfile: "https://github.com/antpard",
   twitterProfile: "https://bsky.app/profile/apardo.spluca.org",
   linkedinProfile: "https://www.linkedin.com/in/antpard",
-  
+
   // Common text names used throughout the site
   articlesName: "Articles",
   projectsName: "Projects",
+  experiencesName: "Experiences",
   viewAll: "View All",
-  
+
   // Common descriptions used throughout the site
   noArticles: "No featured articles yet.",
   noProjects: "No featured projects yet.",
+  noExperiences: "No featured experiences yet.",
 
   // Blog metadata
   blogTitle: "My Thoughts & Takes",
@@ -31,8 +33,13 @@ export const GLOBAL = {
   projectShortDescription: "A list of my web development projects and developer tools.",
   projectLongDescription: "All of my projects, including both frontend and full-stack applications.",
 
+  // Experience metadata
+  experienceTitle: "Experiences",
+  experienceShortDescription: "A list of my experiences.",
+  experienceLongDescription: "All of my experiences, including both frontend and full-stack applications.",
+
   // Profile image
-  profileImage: "apardo.jpg",
+  profileImage: "deal.jpg",
 
   // Menu items
   menu: {

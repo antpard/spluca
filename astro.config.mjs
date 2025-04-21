@@ -7,10 +7,13 @@ import tailwindcss from "@tailwindcss/vite";
 
 import cloudflare from '@astrojs/cloudflare';
 
+import sentry from '@sentry/astro';
+import spotlightjs from '@spotlightjs/astro';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://spluca.org',
-  integrations: [mdx(), sitemap()],
+  integrations: [mdx(), sitemap(), sentry(), spotlightjs()],
   adapter: cloudflare({
     platformProxy: {
       enabled: true
