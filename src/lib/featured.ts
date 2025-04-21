@@ -1,4 +1,4 @@
-import type { ArticleFrontmatter, ProjectFrontmatter } from "./types";
+import type { ArticleFrontmatter, ProjectFrontmatter, ExperienceFrontmatter } from "./types";
 import { getShortDescription, processContentInDir } from "./utils";
 
 export const featuredProjects = (
@@ -27,6 +27,33 @@ export const featuredProjects = (
     const dateB = new Date(b.timestamp);
     return dateB.getTime() - dateA.getTime();
   });
+
+//export const featuredExperiences = (
+//  await processContentInDir<ExperienceFrontmatter, ExperienceFrontmatter>(
+//    "experiences",
+//    (data) => {
+//      const shortDescription = getShortDescription(
+//        data.experiencematter.description,
+//      );
+//      return {
+//        title: data.experiencematter.title,
+//        description: shortDescription,
+//        tags: data.experiencematter.tags,
+//        githubUrl: data.experiencematter.githubUrl,
+//        liveUrl: data.experiencematter.liveUrl,
+//        featured: data.experiencematter.featured,
+//        timestamp: data.experiencematter.timestamp,
+//        filename: `/projects/${data.experiencematter.filename}`,
+//      };
+//    },
+//  )
+//)
+//  .filter((experience) => experience.featured)
+//  .sort((a, b) => {
+//    const dateA = new Date(a.timestamp);
+//    const dateB = new Date(b.timestamp);
+//    return dateB.getTime() - dateA.getTime();
+//  });
 
 export const featuredArticles = (
     await processContentInDir<ArticleFrontmatter, ArticleFrontmatter>(
