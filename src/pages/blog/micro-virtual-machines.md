@@ -3,10 +3,10 @@ layout: ../../layouts/BlogLayout.astro
 title: Micro Virtual Machines
 description: Micro Virtual Machines (µVMs) represent a significant evolution in virtualization technology, specifically designed to bridge the gap between traditional Virtual Machines (VMs) and containers.
 tags: ["mikrom", "kvm", "virtualization", "edge", "5g", "iot"]
-time: 7 
+time: 5 
 featured: true
 timestamp: 2025-05-17T01:37:02+00:00
-filename: guerrilla-open-manifesto 
+filename: micro-virtual-machines
 ---
 
 Micro Virtual Machines (µVMs) are presented as a significant evolution in [virtualization](https://www.techtarget.com/whatis/definition/virtualization-architecture) technology, designed to offer a balance between the robust security and isolation of traditional Virtual Machines (VMs) and the efficiency and agility of containers. They achieve this balance through several key characteristics: a **minimalist design** that includes only essential components to reduce the attack surface, **ultra-rapid startup times** measured in milliseconds, unlike the seconds or minutes traditional VMs require, and a **minimal memory footprint**, typically only a few megabytes per instance. For example, technologies like [Firecracker](https://firecracker-microvm.github.io/) can start application code in less than 125 ms and use less than 5 MiB of memory per instance. Crucially, µVMs provide **strong isolation based on hardware**, leveraging modern processor virtualization extensions (like Intel VT-x or AMD-V). This allows each µVM instance to run its own independent kernel, separate from the host and other µVMs, offering superior security compared to containers that share the host kernel and preventing privilege escalations or "escape" attacks. This combination of minimal overhead, rapid startup, and hardware isolation positions µVMs as a lightweight, secure, and efficient virtualization option. Technologies mentioned as forming the basis for such platforms include Firecracker and Kata Containers.
