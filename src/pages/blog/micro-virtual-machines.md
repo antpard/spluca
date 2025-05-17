@@ -5,7 +5,7 @@ description: Micro Virtual Machines (µVMs) represent a significant evolution in
 tags: ["mikrom", "kvm", "virtualization", "edge", "5g", "iot"]
 time: 7 
 featured: true
-timestamp: 2025-04-15T01:37:02+00:00
+timestamp: 2025-05-17T01:37:02+00:00
 filename: guerrilla-open-manifesto 
 ---
 
