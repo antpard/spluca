@@ -44,7 +44,7 @@ export const GLOBAL = {
   // Menu items
   menu: {
     home: "/",
-    resume: "/resume",
+    projects: "/projects",
     blog: "/blog",
   }
 };
