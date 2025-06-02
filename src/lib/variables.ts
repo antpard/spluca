@@ -5,7 +5,7 @@ export const GLOBAL = {
   username: "Antonio Pardo",
   rootUrl: "https://spluca.org",
   shortDescription: "Systems Engineer",
-  longDescription: "A systems engineer with nearly 20 years of experience",
+  longDescription: "A systems engineer with nearly 25 years of experience",
 
   // Social media links
   githubProfile: "https://github.com/antpard",
@@ -26,17 +26,17 @@ export const GLOBAL = {
   // Blog metadata
   blogTitle: "My Thoughts & Takes",
   blogShortDescription: "Practical wisdom, unfiltered thoughts, and hot takes.",
-  blogLongDescription: "Web development, tech trends, and the occasional programming mishap.",
+  blogLongDescription: "Open Source systems, tech trends, and the occasional programming mishap.",
 
   // Project metadata
   projectTitle: "Projects and Code",
-  projectShortDescription: "A list of my web development projects and developer tools.",
-  projectLongDescription: "All of my projects, including both frontend and full-stack applications.",
+  projectShortDescription: "A list of my projects.",
+  projectLongDescription: "All of my projects.",
 
   // Experience metadata
   experienceTitle: "Experiences",
   experienceShortDescription: "A list of my experiences.",
-  experienceLongDescription: "All of my experiences, including both frontend and full-stack applications.",
+  experienceLongDescription: "All of my experiences.",
 
   // Profile image
   profileImage: "deal.jpg",
