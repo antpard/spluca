@@ -4,7 +4,7 @@ export const GLOBAL = {
   // Site metadata
   username: "Antonio Pardo",
   rootUrl: "https://spluca.org",
-  shortDescription: "Systems Engineer",
+  shortDescription: "Automation Architect",
   longDescription: "A systems engineer with nearly 25 years of experience",
 
   // Social media links
@@ -39,7 +39,7 @@ export const GLOBAL = {
   experienceLongDescription: "All of my experiences.",
 
   // Profile image
-  profileImage: "apardo.jpg",
+  profileImage: "deal.jpg",
 
   // Menu items
   menu: {
