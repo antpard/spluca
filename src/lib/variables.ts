@@ -26,7 +26,8 @@ export const GLOBAL = {
   // Blog metadata
   blogTitle: "My Thoughts & Takes",
   blogShortDescription: "Practical wisdom, unfiltered thoughts, and hot takes.",
-  blogLongDescription: "Open Source systems, tech trends, and the occasional programming mishap.",
+  blogLongDescription:
+    "Open Source systems, tech trends, and the occasional programming mishap.",
 
   // Project metadata
   projectTitle: "Projects and Code",
@@ -39,12 +40,12 @@ export const GLOBAL = {
   experienceLongDescription: "All of my experiences.",
 
   // Profile image
-  profileImage: "deal.jpg",
+  profileImage: "apardo-new.jpg",
 
   // Menu items
   menu: {
     home: "/",
     projects: "/projects",
     blog: "/blog",
-  }
+  },
 };
