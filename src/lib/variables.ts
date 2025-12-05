@@ -40,7 +40,7 @@ export const GLOBAL = {
   experienceLongDescription: "All of my experiences.",
 
   // Profile image
-  profileImage: "apardo-new.jpg",
+  profileImage: "avatar.jpg",
 
   // Menu items
   menu: {
