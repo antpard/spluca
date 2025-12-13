@@ -21,7 +21,7 @@ Knative consists of two fundamental modules:
 
 * **Knative Serving**: Manages the deployment and serving of serverless applications. It offers capabilities such as **auto-scaling** (including **scale-to-zero**), **intelligent traffic routing**, and **version management**. This means your applications will only consume resources when they actually need them.
 
-* **Knative Eventing**: Provides infrastructure for **consuming and producing events**, enabling the creation of **decoupled event-driven architectures**. It facilitates integration between different services through a flexible **publish-subscribe model.
+* **Knative Eventing**: Provides infrastructure for **consuming and producing events**, enabling the creation of **decoupled event-driven architectures**. It facilitates integration between different services through a flexible **publish-subscribe** model.
 
 # Benefits of Using Knative
 
