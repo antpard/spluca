@@ -3,7 +3,7 @@ layout: ../../layouts/BlogLayout.astro
 title: Knative, Simplifying Serverless Development on Kubernetes
 description: Knative is an open-source platform that extends Kubernetes to facilitate the building, deployment, and management of serverless and event-driven applications.
 tags: ["knative", "edge", "5g", "iot", "serverless", "functions", "containers", "kubernetes"]
-time: 5 
+time: 6 
 featured: true
 timestamp: 2025-12-13T13:00:00+00:00
 filename: knative-simplifying-serverless-development-on-kubernetes
