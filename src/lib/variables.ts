@@ -8,7 +8,7 @@ export const GLOBAL = {
   longDescription: "A systems engineer with nearly 25 years of experience",
 
   // Social media links
-  githubProfile: "https://github.com/antpard",
+  githubProfile: "https://github.com/spluca",
   twitterProfile: "https://bsky.app/profile/apardo.spluca.org",
   linkedinProfile: "https://www.linkedin.com/in/antpard",
 
