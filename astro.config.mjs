@@ -12,7 +12,7 @@ import spotlightjs from '@spotlightjs/astro';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://spluca.org',
+  site: 'https://apardo.spluca.org',
   integrations: [mdx(), sitemap(), sentry(), spotlightjs()],
   adapter: cloudflare({
     platformProxy: {
