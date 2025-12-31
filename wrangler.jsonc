@@ -19,7 +19,15 @@
 	},
 	"routes": [
     {
+      "pattern": "www.spluca.org",
+      "custom_domain": true
+    },
+    {
       "pattern": "apardo.spluca.org",
+      "custom_domain": true
+    },
+    {
+      "pattern": "spluca.org",
       "custom_domain": true
     }
 	],
