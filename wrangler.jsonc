@@ -14,9 +14,15 @@
 		"binding": "ASSETS",
 		"directory": "./dist"
 	},
-	"observability": {
-		"enabled": true
-	},
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true
+    },
+    "traces": {
+      "enabled": true
+    }
+  },
 	"routes": [
     {
       "pattern": "www.spluca.org",
