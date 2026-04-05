@@ -127,3 +127,17 @@
     font-variation-settings: "opsz" 72;
   }
 }
+
+@layer components {
+  html.dark .astro-code {
+    background-color: var(--shiki-dark-bg, #0d1117) !important;
+    color: var(--shiki-dark, var(--color-zag-light)) !important;
+  }
+
+  html.dark .astro-code span {
+    color: var(--shiki-dark, var(--color-zag-light)) !important;
+    font-style: var(--shiki-dark-font-style, normal) !important;
+    font-weight: var(--shiki-dark-font-weight, normal) !important;
+    text-decoration: var(--shiki-dark-text-decoration, none) !important;
+  }
+}

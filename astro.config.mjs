@@ -11,6 +11,14 @@ import spotlightjs from '@spotlightjs/astro';
 export default defineConfig({
   site: 'https://apardo.spluca.org',
   integrations: [mdx(), sitemap(), sentry(), spotlightjs()],
+  markdown: {
+    shikiConfig: {
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark',
+      },
+    },
+  },
   adapter: cloudflare({
     platformProxy: {
       enabled: true
