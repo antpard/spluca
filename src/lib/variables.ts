@@ -41,6 +41,11 @@ export const GLOBAL = {
   serviceShortDescription: "A list of my services.",
   serviceLongDescription: "All of my services.",
 
+  // Contact metadata
+  contactTitle: "Contact",
+  contactShortDescription: "Get in touch.",
+  contactLongDescription: "Interested in working together? Let's talk.",
+
   // Experience metadata
   experienceTitle: "Experiences",
   experienceShortDescription: "A list of my experiences.",
@@ -55,5 +60,6 @@ export const GLOBAL = {
     projects: "/projects",
     services: "/services",
     blog: "/blog",
+    contact: "/contact",
   },
 };
