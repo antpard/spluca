@@ -81,3 +81,37 @@ export type ArticleFrontmatter = {
    */
   filename: string;
 };
+
+export type ServiceFrontmatter = {
+  /**
+   * The title of the service
+   */
+  title: string;
+
+  /**
+   * The description of the service
+   */
+  description: string;
+
+  /**
+   * The tags of the service
+   * (eg. ["Cloud", "DevOps", "Security"])
+   */
+  tags?: string[];
+
+  /**
+   * Whether the service should be featured on the homepage
+   */
+  featured?: boolean;
+
+  /**
+   * The timestamp the service was added in W3C format
+   */
+  timestamp: string;
+
+  /**
+   * The URL of the service on the website
+   * (eg. https://apardo.spluca.org/services/my-service)
+   */
+  filename: string;
+};

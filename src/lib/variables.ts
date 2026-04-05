@@ -15,12 +15,14 @@ export const GLOBAL = {
   // Common text names used throughout the site
   articlesName: "Articles",
   projectsName: "Projects",
+  servicesName: "Services",
   experiencesName: "Experiences",
   viewAll: "View All",
 
   // Common descriptions used throughout the site
   noArticles: "No featured articles yet.",
   noProjects: "No featured projects yet.",
+  noServices: "No featured services yet.",
   noExperiences: "No featured experiences yet.",
 
   // Blog metadata
@@ -34,6 +36,11 @@ export const GLOBAL = {
   projectShortDescription: "A list of my projects.",
   projectLongDescription: "All of my projects.",
 
+  // Service metadata
+  serviceTitle: "Services",
+  serviceShortDescription: "A list of my services.",
+  serviceLongDescription: "All of my services.",
+
   // Experience metadata
   experienceTitle: "Experiences",
   experienceShortDescription: "A list of my experiences.",
@@ -46,6 +53,7 @@ export const GLOBAL = {
   menu: {
     home: "/",
     projects: "/projects",
+    services: "/services",
     blog: "/blog",
   },
 };
