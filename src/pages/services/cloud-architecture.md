@@ -4,7 +4,7 @@ title: "Cloud Architecture & Infrastructure"
 description: "Design and implementation of scalable cloud-native architectures using containerization, microservices, and infrastructure-as-code. Specialized in Kubernetes, Firecracker microVMs, and serverless platforms."
 tags: ["Cloud", "Kubernetes", "Firecracker", "Serverless", "Infrastructure"]
 featured: true
-timestamp: "2026-04-05"
+timestamp: "2026-04-06"
 filename: "cloud-architecture"
 ---
 

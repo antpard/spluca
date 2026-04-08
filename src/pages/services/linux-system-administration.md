@@ -4,7 +4,7 @@ title: "Linux System Administration"
 description: "From the kernel up — package management, firewalls, networking, and hardening for Red Hat and Debian-based systems. Production-ready infrastructure you can trust."
 tags: ["Linux", "SysAdmin", "Red Hat", "Debian", "Security", "Networking"]
 featured: true
-timestamp: "2026-04-05"
+timestamp: "2026-04-07"
 filename: "linux-system-administration"
 ---
 
