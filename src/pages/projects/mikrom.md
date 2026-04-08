@@ -5,7 +5,7 @@ description: Firecracker microVM management platform for running secure, isolate
 tags: ["Go", "Firecracker", "Kubernetes", "Platform Engineering"]
 liveUrl: https://mikrom.es
 featured: true
-timestamp: "2024-01-01"
+timestamp: "2026-01-01"
 filename: mikrom
 ---
 
