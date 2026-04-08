@@ -5,7 +5,6 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "spluca",
-	"main": "./dist/_worker.js/index.js",
 	"compatibility_date": "2025-04-14",
 	"compatibility_flags": [
 		"nodejs_compat"

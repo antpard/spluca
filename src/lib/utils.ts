@@ -1,4 +1,3 @@
-import fs from "node:fs/promises";
 import { GLOBAL } from "./variables";
 
 type MarkdownData<T extends object> = {
@@ -7,60 +6,24 @@ type MarkdownData<T extends object> = {
   url: string;
 };
 
+const projectModules = import.meta.glob('/src/pages/projects/*.md');
+const blogModules = import.meta.glob('/src/pages/blog/*.md');
+const serviceModules = import.meta.glob('/src/pages/services/*.md');
 
-/**
- * This function processes the content of a directory and returns an array of processed content.
- * It takes a content type, a function to process the content, and an optional directory.
- * If no directory is provided, it defaults to the current working directory.
- * 
- * @param contentType the type of content to process
- * @param processFn the function to process the content
- * @param dir the directory to process the content from
- * @returns a promise that resolves to an array of processed content
- */
 export const processContentInDir = async <T extends object, K>(
   contentType: "projects" | "blog" | "services",
   processFn: (data: MarkdownData<T>) => K,
-  dir: string = process.cwd(),
 ) => {
-  const files = await fs.readdir(dir + `/src/pages/${contentType}`);
-  const markdownFiles = files
-    .filter((file: string) => file.endsWith(".md"))
-    .map((file) => file.split(".")[0]);
-  const readMdFileContent = async (file: string) => {
-    if (contentType === "projects") {
-      const content = import.meta
-        .glob(`/src/pages/projects/*.md`)
-        [`/src/pages/projects/${file}.md`]();
-      const data = (await content) as {
-        frontmatter: T;
-        file: string;
-        url: string;
-      };
+  const modules = contentType === "projects" ? projectModules
+    : contentType === "services" ? serviceModules
+    : blogModules;
+
+  return Promise.all(
+    Object.values(modules).map(async (loader) => {
+      const data = (await loader()) as MarkdownData<T>;
       return processFn(data);
-    } else if (contentType === "services") {
-      const content = import.meta
-        .glob(`/src/pages/services/*.md`)
-        [`/src/pages/services/${file}.md`]();
-      const data = (await content) as {
-        frontmatter: T;
-        file: string;
-        url: string;
-      };
-      return processFn(data);
-    } else {
-      const content = import.meta
-        .glob(`/src/pages/blog/*.md`)
-        [`/src/pages/blog/${file}.md`]();
-      const data = (await content) as {
-        frontmatter: T;
-        file: string;
-        url: string;
-      };
-      return processFn(data);
-    }
-  };
-  return await Promise.all(markdownFiles.map(readMdFileContent));
+    })
+  );
 };
 
 /**
