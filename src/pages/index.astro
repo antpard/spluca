@@ -36,9 +36,24 @@ import FeaturedArticles from "../components/home/FeaturedArticles.astro";
       content={GLOBAL.longDescription}
     />
     <meta name="twitter:image" content={`${GLOBAL.rootUrl}/spluca.png`} />
+    <meta property="og:type" content="website" />
     <meta http-equiv="content-language" content="en" />
     <meta name="language" content="English" />
     <link rel="canonical" href={GLOBAL.rootUrl} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": GLOBAL.username,
+      "url": GLOBAL.rootUrl,
+      "description": GLOBAL.longDescription,
+      "jobTitle": GLOBAL.shortDescription,
+      "sameAs": [
+        GLOBAL.githubProfile,
+        GLOBAL.linkedinProfile,
+        GLOBAL.twitterProfile,
+      ],
+      "image": `${GLOBAL.rootUrl}/${GLOBAL.profileImage}`,
+    })} />
   </Fragment>
   <Section class="my-16">
     <Hero />

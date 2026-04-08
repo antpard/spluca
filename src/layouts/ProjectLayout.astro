@@ -28,9 +28,24 @@ const sourceUrl = generateSourceUrl(frontmatter.filename, "projects");
     <meta name="twitter:title" content={`${frontmatter.title} • ${GLOBAL.username}`} />
     <meta name="twitter:description" content={shortDescription} />
     <meta name="twitter:image" content={`${GLOBAL.rootUrl}/${GLOBAL.profileImage}`} />
+    <meta property="og:type" content="website" />
     <meta http-equiv="content-language" content="en" />
     <meta name="language" content="English" />
     <link rel="canonical" href={sourceUrl} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareSourceCode",
+      "name": frontmatter.title,
+      "description": frontmatter.description,
+      "url": sourceUrl,
+      "keywords": frontmatter.tags?.join(", "),
+      ...(frontmatter.githubUrl && { codeRepository: frontmatter.githubUrl }),
+      "author": {
+        "@type": "Person",
+        "name": GLOBAL.username,
+        "url": GLOBAL.rootUrl,
+      },
+    })} />
   </Fragment>
   <Section class="mt-8">
     <div class="flex flex-col gap-4 mt-8 mb-16">
