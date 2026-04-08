@@ -9,7 +9,7 @@ import spotlightjs from '@spotlightjs/astro';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://apardo.spluca.org',
+  site: 'https://spluca.org',
   integrations: [mdx(), sitemap(), sentry(), spotlightjs()],
   markdown: {
     shikiConfig: {

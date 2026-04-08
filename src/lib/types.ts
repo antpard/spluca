@@ -111,7 +111,7 @@ export type ServiceFrontmatter = {
 
   /**
    * The URL of the service on the website
-   * (eg. https://apardo.spluca.org/services/my-service)
+   * (eg. https://spluca.org/services/my-service)
    */
   filename: string;
 };
