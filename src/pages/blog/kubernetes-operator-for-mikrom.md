@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/BlogLayout.astro
-title: Creando un operador de Kubernetes para Mikrom
+title: Building a Kubernetes Operator for Mikrom
 description: How we designed and built a Kubernetes operator to manage Firecracker microVMs natively — the MikromVM CRD, the reconciler lifecycle, and how we test it all without a real cluster.
 tags: ["kubernetes", "operator", "firecracker", "go", "mikrom", "kubebuilder", "controller-runtime"]
 time: 10
@@ -9,7 +9,7 @@ timestamp: 2026-04-09T12:00:00+00:00
 filename: kubernetes-operator-for-mikrom
 ---
 
-# Creando un operador de Kubernetes para Mikrom
+# Building a Kubernetes Operator for Mikrom
 
 [Mikrom](https://mikrom.es) is a microVM-as-a-service platform built on top of
 [Firecracker](https://firecracker-microvm.github.io/). Until now, VM lifecycle was driven by
