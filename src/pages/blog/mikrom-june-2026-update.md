@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/BlogLayout.astro
 title: Mikrom June 2026 Update 
-description: Mikrom June 2026 Update
+description: "Mikrom is no longer just a deployment idea. It is a Rust-first platform-as-a-service with a complete workspace around it: control plane, routing plane, network services, a dashboard, a CLI, a builder, a scheduler, microVM bootstrapping, eBPF support, and a Dagger-backed CI system that keeps the whole thing reproducible."
 tags: ["firecracker", "cloud-hypervisor", "rust", "mikrom", "6PN", "Neon", "Dagger"]
 time: 11
 featured: true
