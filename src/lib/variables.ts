@@ -2,7 +2,7 @@
 
 export const GLOBAL = {
   // Site metadata
-  username: "Antonio Pardo Sánchez",
+  username: "deal",
   rootUrl: "https://spluca.org",
   shortDescription: "Architect @ Mikrom | Platform Architecture, Software Development",
   longDescription: "A systems engineer with nearly 25 years of experience",
