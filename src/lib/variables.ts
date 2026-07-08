@@ -52,7 +52,7 @@ export const GLOBAL = {
   experienceLongDescription: "All of my experiences.",
 
   // Profile image
-  profileImage: "apardo.jpg",
+  profileImage: "apardo.png",
 
   // Menu items
   menu: {
