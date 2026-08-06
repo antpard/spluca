@@ -1,5 +1,15 @@
 packages: []
 
+allowBuilds:
+  '@sentry/cli': true
+  esbuild: true
+  sharp: true
+  workerd: true
+
+minimumReleaseAgeExclude:
+  - '@astrojs/cloudflare@14.2.0'
+  - astro@7.2.0
+
 onlyBuiltDependencies:
   - '@sentry/cli'
   - esbuild
