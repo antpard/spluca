@@ -3,7 +3,8 @@ layout: ../../layouts/ProjectLayout.astro
 title: Mikrom
 description: Rust-first platform-as-a-service for deploying containerized workloads into Firecracker or Cloud Hypervisor microVMs.
 tags: ["Rust", "Firecracker", "Cloud Hypervisor", "NATS", "Dagger"]
-liveUrl: https://github.com/spluca/mikrom
+liveUrl: https://mikrom.spluca.org
+githubUrl: https://github.com/spluca/mikrom
 featured: true
 timestamp: "2026-06-02"
 filename: mikrom
