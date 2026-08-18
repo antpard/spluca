@@ -6,7 +6,7 @@ tags: ["Rust", "Firecracker", "Cloud Hypervisor", "NATS", "Dagger"]
 liveUrl: https://cloud.spluca.org
 githubUrl: https://github.com/spluca/mikrom
 featured: true
-timestamp: "2026-06-02"
+timestamp: "2026-08-18"
 filename: mikrom
 ---
 
