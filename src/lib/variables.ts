@@ -4,8 +4,9 @@ export const GLOBAL = {
   // Site metadata
   username: "Antonio Pardo Sánchez",
   rootUrl: "https://spluca.org",
-  shortDescription: "Architect @ Mikrom | Platform Architecture, Software Development",
-  longDescription: "A systems engineer with nearly 25 years of experience",
+  shortDescription: "Platform Architect | Cloud, Linux, Rust, Kubernetes, and MicroVM Systems",
+  longDescription:
+    "Antonio Pardo Sánchez is a platform architect and systems engineer with nearly 25 years of experience designing cloud infrastructure, Linux platforms, backend systems, Kubernetes services, and microVM-based products.",
 
   // Social media links
   githubProfile: "https://github.com/spluca",
@@ -29,22 +30,25 @@ export const GLOBAL = {
   blogTitle: "My Thoughts & Takes",
   blogShortDescription: "Practical wisdom, unfiltered thoughts, and hot takes.",
   blogLongDescription:
-    "Open Source systems, tech trends, and the occasional programming mishap.",
+    "Technical articles on cloud architecture, Linux systems, Rust, Kubernetes, Firecracker, microVMs, backend engineering, and open source platform development.",
 
   // Project metadata
   projectTitle: "Projects and Code",
   projectShortDescription: "A list of my projects.",
-  projectLongDescription: "All of my projects.",
+  projectLongDescription:
+    "Open source and product engineering projects by Antonio Pardo Sánchez, including cloud platforms, backend services, infrastructure tooling, and microVM systems.",
 
   // Service metadata
   serviceTitle: "Services",
   serviceShortDescription: "A list of my services.",
-  serviceLongDescription: "All of my services.",
+  serviceLongDescription:
+    "Professional services for cloud architecture, backend development, Linux systems administration, Kubernetes platforms, infrastructure automation, and production operations.",
 
   // Contact metadata
   contactTitle: "Contact",
   contactShortDescription: "Get in touch.",
-  contactLongDescription: "Interested in working together? Let's talk.",
+  contactLongDescription:
+    "Contact Antonio Pardo Sánchez for cloud architecture, backend development, Linux systems administration, Kubernetes platforms, and infrastructure consulting.",
 
   // Experience metadata
   experienceTitle: "Experiences",

@@ -2,33 +2,25 @@
 import { GLOBAL } from "../lib/variables";
 import Layout from "../layouts/Layout.astro";
 import Section from "../components/common/Section.astro";
+import Seo from "../components/Seo.astro";
+import { breadcrumbSchema, contactPageSchema } from "../lib/seo";
 
 ---
 
 <Layout>
   <Fragment slot="head">
-    <title>{GLOBAL.contactTitle} • {GLOBAL.username}</title>
-    <meta
-      name="description"
-      content={GLOBAL.contactLongDescription}
+    <Seo
+      title={`${GLOBAL.contactTitle} • ${GLOBAL.username}`}
+      description={GLOBAL.contactLongDescription}
+      canonicalPath="/contact"
+      jsonLd={[
+        contactPageSchema(),
+        breadcrumbSchema([
+          { name: GLOBAL.username, path: "/" },
+          { name: GLOBAL.contactTitle, path: "/contact" },
+        ]),
+      ]}
     />
-    <meta property="og:title" content={`${GLOBAL.contactTitle} • ${GLOBAL.username}`} />
-    <meta
-      property="og:description"
-      content={GLOBAL.contactShortDescription}
-    />
-    <meta property="og:image" content={`${GLOBAL.rootUrl}/${GLOBAL.profileImage}`} />
-    <meta property="og:url" content={`${GLOBAL.rootUrl}/contact`} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={`${GLOBAL.contactTitle} • ${GLOBAL.username}`} />
-    <meta
-      name="twitter:description"
-      content={GLOBAL.contactShortDescription}
-    />
-    <meta name="twitter:image" content={`${GLOBAL.rootUrl}/${GLOBAL.profileImage}`} />
-    <meta http-equiv="content-language" content="en" />
-    <meta name="language" content="English" />
-    <link rel="canonical" href={`${GLOBAL.rootUrl}/contact`} />
   </Fragment>
   <Section class="py-4 my-8">
     <div class="flex items-center gap-4 pt-8 pb-16">

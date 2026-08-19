@@ -1,12 +1,10 @@
 ---
 import Section from "../components/common/Section.astro";
 import type { ArticleFrontmatter } from "../lib/types";
-import {
-  getShortDescription,
-  processArticleDate,
-  generateSourceUrl,
-} from "../lib/utils";
+import { processArticleDate, generateSourceUrl } from "../lib/utils";
 import { GLOBAL } from "../lib/variables";
+import Seo from "../components/Seo.astro";
+import { blogPostingSchema, breadcrumbSchema } from "../lib/seo";
 import type { MarkdownLayoutProps } from "astro";
 import Prose from "../components/Prose.astro";
 import Layout from "./Layout.astro";
@@ -14,43 +12,27 @@ import Layout from "./Layout.astro";
 type Props = MarkdownLayoutProps<ArticleFrontmatter>;
 
 const { frontmatter } = Astro.props;
-const shortDescription = getShortDescription(frontmatter.description);
 const articleDate = processArticleDate(frontmatter.timestamp);
 const sourceUrl = generateSourceUrl(frontmatter.filename, "blog");
 ---
 
 <Layout>
   <Fragment slot="head">
-    <title>{frontmatter.title} • {GLOBAL.username}</title>
-    <meta name="description" content={frontmatter.description} />
-    <meta property="og:title" content={`${frontmatter.title} • ${GLOBAL.username}`} />
-    <meta property="og:description" content={shortDescription} />
-    <meta property="og:image" content={`${GLOBAL.rootUrl}/${GLOBAL.profileImage}`} />
-    <meta property="og:url" content={frontmatter.url} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={`${frontmatter.title} • ${GLOBAL.username}`} />
-    <meta name="twitter:description" content={shortDescription} />
-    <meta name="twitter:image" content={`${GLOBAL.rootUrl}/${GLOBAL.profileImage}`} />
-    <meta property="og:type" content="article" />
-    <meta property="article:published_time" content={frontmatter.timestamp} />
-    <meta property="article:author" content={GLOBAL.username} />
-    <meta http-equiv="content-language" content="en" />
-    <meta name="language" content="English" />
-    <link rel="canonical" href={sourceUrl} />
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": frontmatter.title,
-      "description": frontmatter.description,
-      "datePublished": frontmatter.timestamp,
-      "url": sourceUrl,
-      "keywords": frontmatter.tags?.join(", "),
-      "author": {
-        "@type": "Person",
-        "name": GLOBAL.username,
-        "url": GLOBAL.rootUrl,
-      },
-    })} />
+    <Seo
+      title={`${frontmatter.title} • ${GLOBAL.username}`}
+      description={frontmatter.description}
+      canonicalPath={`/blog/${frontmatter.filename}`}
+      ogType="article"
+      publishedTime={frontmatter.timestamp}
+      jsonLd={[
+        blogPostingSchema(frontmatter),
+        breadcrumbSchema([
+          { name: GLOBAL.username, path: "/" },
+          { name: GLOBAL.articlesName, path: "/blog" },
+          { name: frontmatter.title, path: sourceUrl },
+        ]),
+      ]}
+    />
   </Fragment>
   <Section class="pt-8">
     <div class="flex flex-col gap-4 mt-8 mb-16">

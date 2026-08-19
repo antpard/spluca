@@ -5,6 +5,7 @@
 	"scripts": {
 		"dev": "astro dev",
 		"build": "astro build",
+		"test": "node --experimental-strip-types --test test/*.test.mjs",
 		"preview": "astro build && wrangler dev",
 		"astro": "astro",
 		"deploy": "astro build && wrangler deploy",

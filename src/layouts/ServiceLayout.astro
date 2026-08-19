@@ -1,49 +1,36 @@
 ---
-import { getShortDescription, generateSourceUrl } from "../lib/utils";
+import { generateSourceUrl } from "../lib/utils";
 import type { ServiceFrontmatter } from "../lib/types";
 import type { MarkdownLayoutProps } from "astro";
 import Prose from "../components/Prose.astro";
 import Layout from "./Layout.astro";
 import Section from "../components/common/Section.astro";
 import { GLOBAL } from "../lib/variables";
+import Seo from "../components/Seo.astro";
+import { breadcrumbSchema, serviceSchema } from "../lib/seo";
 
 
 type Props = MarkdownLayoutProps<ServiceFrontmatter>;
 
 const { frontmatter } = Astro.props;
-const shortDescription = getShortDescription(frontmatter.description);
 const sourceUrl = generateSourceUrl(frontmatter.filename, "services");
 ---
 
 <Layout>
   <Fragment slot="head">
-    <title>{frontmatter.title} • {GLOBAL.username}</title>
-    <meta name="description" content={frontmatter.description} />
-    <meta property="og:title" content={`${frontmatter.title} • ${GLOBAL.username}`} />
-    <meta property="og:description" content={shortDescription} />
-    <meta property="og:image" content={`${GLOBAL.rootUrl}/${GLOBAL.profileImage}`} />
-    <meta property="og:url" content={frontmatter.url} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={`${frontmatter.title} • ${GLOBAL.username}`} />
-    <meta name="twitter:description" content={shortDescription} />
-    <meta name="twitter:image" content={`${GLOBAL.rootUrl}/${GLOBAL.profileImage}`} />
-    <meta property="og:type" content="website" />
-    <meta http-equiv="content-language" content="en" />
-    <meta name="language" content="English" />
-    <link rel="canonical" href={sourceUrl} />
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "name": frontmatter.title,
-      "description": frontmatter.description,
-      "url": sourceUrl,
-      "keywords": frontmatter.tags?.join(", "),
-      "provider": {
-        "@type": "Person",
-        "name": GLOBAL.username,
-        "url": GLOBAL.rootUrl,
-      },
-    })} />
+    <Seo
+      title={`${frontmatter.title} • ${GLOBAL.username}`}
+      description={frontmatter.description}
+      canonicalPath={`/services/${frontmatter.filename}`}
+      jsonLd={[
+        serviceSchema(frontmatter),
+        breadcrumbSchema([
+          { name: GLOBAL.username, path: "/" },
+          { name: GLOBAL.servicesName, path: "/services" },
+          { name: frontmatter.title, path: sourceUrl },
+        ]),
+      ]}
+    />
   </Fragment>
   <Section class="mt-8">
     <div class="flex flex-col gap-4 mt-8 mb-16">

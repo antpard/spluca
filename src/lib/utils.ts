@@ -1,4 +1,4 @@
-import { GLOBAL } from "./variables";
+import { absoluteUrl } from "./seo";
 
 type MarkdownData<T extends object> = {
   frontmatter: T;
@@ -61,5 +61,5 @@ export const generateSourceUrl = (
   sourceUrl: string,
   contentType: "projects" | "blog" | "services",
 ) => {
-  return `${GLOBAL.rootUrl}/${contentType}/${sourceUrl}`;
+  return absoluteUrl(`/${contentType}/${sourceUrl}`);
 };
