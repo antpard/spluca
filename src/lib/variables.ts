@@ -9,7 +9,7 @@ export const GLOBAL = {
     "Antonio Pardo Sánchez is a platform architect and systems engineer with nearly 25 years of experience designing cloud infrastructure, Linux platforms, backend systems, Kubernetes services, and microVM-based products.",
 
   // Social media links
-  githubProfile: "https://github.com/spluca",
+  githubProfile: "https://github.com/antpard",
   twitterProfile: "",
   linkedinProfile: "https://www.linkedin.com/in/antpard",
 
