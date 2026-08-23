@@ -9,7 +9,7 @@ timestamp: 2026-04-07T10:00:00+00:00
 filename: integrating-mikrom-agent-with-firecracker-containerd
 ---
 
-# Integrating mikrom-agent with firecracker-containerd
+# 🔌 Integrating mikrom-agent with firecracker-containerd
 
 [Mikrom Agent](https://github.com/spluca/mikrom-agent) is the gRPC service that manages Firecracker microVMs on each host in the Mikrom platform. It delegates VM lifecycle to [firecracker-containerd](https://github.com/firecracker-microvm/firecracker-containerd): our agent calls `containerd.Pull`, `containerd.NewContainer`, and `container.NewTask`, and the `aws.firecracker` runtime shim handles the rest.
 
@@ -23,7 +23,7 @@ The VM appeared in `ctr containers ls`, then vanished. This post covers what we 
 
 ---
 
-## The stack
+## 🧱 The stack
 
 Before diving in, here is how the layers fit together:
 
@@ -47,7 +47,7 @@ Our agent uses `github.com/containerd/containerd/v2` — the current release. Th
 
 ---
 
-## Bug 1: ImageRef field was ignored
+## 🐛 Bug 1: ImageRef field was ignored
 
 The first failure was straightforward. Our `CreateVM` protobuf message has an `ImageRef` field:
 
@@ -94,7 +94,7 @@ With that, the image pull succeeded and the container was created. Then `contain
 
 ---
 
-## Bug 2: ttrpc: closed
+## 🐛 Bug 2: ttrpc: closed
 
 ttrpc is a minimal RPC protocol used for communication between the containerd shim and the in-VM guest agent over a vsock connection. `ttrpc: closed` means the connection dropped before a response was sent — either a crash, a timeout, or an explicit close on the other end.
 
@@ -110,7 +110,7 @@ github.com/firecracker-microvm/firecracker-containerd/agent.logPanicAndDie(...)
 
 The in-VM guest agent was panicking. `logPanicAndDie` calls `logger.Fatalf` which calls `os.Exit(1)`. The vsock closes. The shim gets `ttrpc: closed`. That error propagates back to our gRPC call.
 
-### Why was the agent receiving a CreateVMRequest?
+### ❓ Why was the agent receiving a CreateVMRequest?
 
 Inside the firecracker-containerd shim, the `Create` handler has a fallback for task options (simplified):
 
@@ -131,7 +131,7 @@ When `GetValue()` returns `nil`, the code takes the fallback path and loads `Run
 
 So the real question is: why was `GetValue()` returning `nil`?
 
-### The proto3 zero-value trap
+### ⚠️ The proto3 zero-value trap
 
 Our `NewTask` call was setting options like this:
 
@@ -168,7 +168,7 @@ func TestNewTaskOpts_EmptyOptions_EmptyProtoBytes(t *testing.T) {
 }
 ```
 
-### The fix
+### ✅ The fix
 
 Set any non-zero field so that `proto.Marshal` produces actual bytes on the wire:
 
@@ -196,7 +196,7 @@ func TestNewTaskOpts_BinaryName_NonEmptyProtoBytes(t *testing.T) {
 
 ---
 
-## Why this only appeared with the v2 client
+## 🔀 Why this only appeared with the v2 client
 
 The containerd v2 client always sets `ti.Options`, but with a zero-value struct that serializes to nothing. The v1.7 shim was written expecting either a populated `CreateVMRequest` in `RuntimeOptions` or a fully populated `Options` — not an empty `Any`. The fallback logic made sense for v1 clients. Against a v2 client it triggers unconditionally when the options struct has no non-zero fields.
 
@@ -204,7 +204,7 @@ Neither side is wrong in isolation. The mismatch only surfaces at the boundary.
 
 ---
 
-## Summary
+## 📋 Summary
 
 | Step | What happened | Fix |
 |---|---|---|
@@ -218,7 +218,7 @@ The surface error was four layers removed from the actual cause. Each layer was 
 
 ---
 
-## Takeaways
+## 💡 Takeaways
 
 **proto3 zero values are invisible on the wire.** You cannot distinguish "field set to empty" from "field not set at all". If your logic depends on detecting whether a caller set a field, use `oneof`, wrapper types, or a non-zero sentinel — not a bare proto3 field.
 

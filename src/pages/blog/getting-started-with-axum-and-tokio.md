@@ -17,7 +17,7 @@ Welcome! If you're curious about building web APIs in Rust, you've come to the r
 
 We'll build a simple task management API with full CRUD operations (Create, Read, Update, Delete). By the end, you'll understand how to handle routes, manage shared state, and work with JSON data.
 
-## Project Setup
+## ⚙️ Project Setup
 
 Let's start by creating a new Rust project and adding our dependencies. Here's what our `Cargo.toml` needs:
 
@@ -45,7 +45,7 @@ Here's what each dependency does:
 - **tower-http**: Middleware utilities (we'll use tracing)
 - **tracing**: Logging and observability
 
-## Building Our Data Model
+## 🧱 Building Our Data Model
 
 Let's define what a task looks like. We'll keep it simple with an ID, title, and completion status:
 
@@ -71,7 +71,7 @@ The `AppState` type might look complex, but it's a common pattern in Rust web ap
 - `RwLock`: Allows multiple readers or one writer (safe concurrent access)
 - `Arc`: Allows sharing the state across multiple handlers safely
 
-## Creating Our First Handler
+## 🔌 Creating Our First Handler
 
 Let's build our first endpoint to list all tasks:
 
@@ -92,7 +92,7 @@ This is an async function that:
 
 Axum handles all the serialization for us. The `Json` wrapper tells Axum to convert our data to JSON and set the correct `Content-Type` header.
 
-## Building the CRUD Operations
+## 🛠️ Building the CRUD Operations
 
 Now let's implement the remaining operations. First, creating a new task:
 
@@ -161,7 +161,7 @@ async fn delete_task(
 }
 ```
 
-## Setting Up Routes and Server
+## 🧭 Setting Up Routes and Server
 
 Now let's wire everything together with a router and add some middleware:
 
@@ -200,7 +200,7 @@ The `#[tokio::main]` macro sets up the Tokio runtime for us. The `TraceLayer` mi
 
 Notice how routes can handle multiple HTTP methods. `/tasks` responds to both GET (list) and POST (create), while `/tasks/:id` handles GET (get one) and DELETE.
 
-## Error Handling
+## 🚨 Error Handling
 
 For production applications, you'll want better error handling. Here's a pattern using custom error types:
 
@@ -226,7 +226,7 @@ impl IntoResponse for AppError {
 
 By implementing `IntoResponse`, you can return your custom error type directly from handlers, and Axum will convert it to the appropriate HTTP response.
 
-## Testing Your API
+## 🧪 Testing Your API
 
 Let's test our API using curl:
 
@@ -248,7 +248,7 @@ curl -X DELETE http://127.0.0.1:3000/tasks/1
 
 Run your server with `cargo run` and try these commands. You should see JSON responses and logging output in your terminal!
 
-## Conclusion
+## ✅ Conclusion
 
 Congratulations! You've built a working REST API with Axum and Tokio. Let's recap what makes this combination powerful:
 
@@ -257,7 +257,7 @@ Congratulations! You've built a working REST API with Axum and Tokio. Let's reca
 - **Ergonomics**: Minimal boilerplate, automatic JSON serialization, and great error messages
 - **Ecosystem**: Seamless integration with Tower middleware and the broader Rust ecosystem
 
-### Next Steps
+### ➡️ Next Steps
 
 To take your API further, consider:
 

@@ -9,7 +9,7 @@ timestamp: 2026-07-10T11:58:00+02:00
 filename: mikrom-july-2026-update
 ---
 
-# Mikrom: Update of the Last 15 Days
+# 🚀 Mikrom: Update of the Last 15 Days
 
 Over the past two weeks, we have been working hard on the **Mikrom** ecosystem—our Rust-first platform-as-a-service for microVM workloads. Our focus during this sprint has been on hardening user account security, integrating a flexible billing and subscription system via **Polar**, expanding CLI capabilities for snapshots and databases, and improving the overall stability of our microVM agent and eBPF data plane.
 

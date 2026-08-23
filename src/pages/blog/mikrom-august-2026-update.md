@@ -9,13 +9,13 @@ timestamp: 2026-08-06T12:00:00+02:00
 filename: mikrom-august-2026-update
 ---
 
-# Mikrom August 2026 Update
+# 🚀 Mikrom August 2026 Update
 
 The past few weeks have been about something quieter than a headline feature: turning Mikrom from a platform that *runs* into a platform that can be **stood up, packaged, and operated** like real production infrastructure. The change is not a headline feature but a shift in the project's center of gravity. What was delegated to ad hoc startup scripts and hand-rolled deployment steps is now expressed as infrastructure as code, shipped as Debian packages, and deployed with Ansible and Terraform across GCP and AWS.
 
 That shift matters because it changes who Mikrom can be trusted by. A platform remains a prototype as long as only its author can bring it up. The work this month is the work that lets a second engineer clone the repository, run the playbooks, and get a working platform without a call to the person who wrote it.
 
-## Production infrastructure, written as code
+## 🏗️ Production infrastructure, written as code
 
 The most important thread of this sprint is that Mikrom's deployment story graduated from scripts to infrastructure as code.
 
@@ -29,7 +29,7 @@ The clearest sign of maturation, though, is packaging. The components are now sh
 
 The reason this is the headline is simple: after this sprint, Mikrom is reproducible. The infrastructure is not remembered — it is written down, versioned, and runnable by someone who was not there.
 
-## Observability that feels real-time
+## 📡 Observability that feels real-time
 
 The operational side of a platform only works if operators can see what is happening while it happens. Mikrom closed the gap between polling and live.
 
@@ -39,7 +39,7 @@ That streaming was paired with a **CLI deployment watcher** and **Svelte 5 react
 
 Storage got the same treatment. The **volume detail page now shows real RBD usage metrics** in real time, drawn from the Ceph-backed storage layer, instead of a placeholder. Live numbers change how users treat a dashboard: they can trust it as a source of truth rather than a stale poster.
 
-## Networking tightened, not rebuilt
+## 🌐 Networking tightened, not rebuilt
 
 Most of the networking work this month was not about new features. It was about the small, precise fixes that make a mesh worth trusting.
 
@@ -47,7 +47,7 @@ The **eBPF egress firewall** finally stopped dropping **IPv6 ICMPv6 pings and ND
 
 The coordination layer was normalized too: NATS subjects were aligned between the API and the app, and the deployment logs stream was cleaned up so logs land in one consistent place. Two smaller runtime fixes round it out — the control plane now **falls back to the previous deployment's hypervisor** when the field is omitted, and the `mikrom-init` status code type was corrected for compatibility. None of this is flashy. All of it is the difference between a mesh that mostly works and one that can be relied on.
 
-## Security as a product decision
+## 🔐 Security as a product decision
 
 Security work this month is less a list of patches and more a posture: credentials and attack surfaces were treated as design concerns, not afterthoughts.
 
@@ -55,19 +55,19 @@ User registration now includes a **stateless captcha**, keeping signups honest w
 
 The largest statement, though, was made in the repository itself. Secrets were **cleaned out of the repo**, a **CI secret audit** was added, and the **builder was hardened against SSRF**. That is the difference between security that is spoken about and security that is written into the pipeline: the build path that turns source into images is now treated as a capability that must be constrained, not assumed safe. A design spec was committed alongside the work, because an improvement is only durable when the reasoning behind it is recorded.
 
-## Billing matures to a sandbox
+## 💳 Billing matures to a sandbox
 
 The commercial surface grew up a little. Mikrom is now wired to the **Polar.sh sandbox** for billing, which lets subscription flows be tested against a real integration without real money moving. The **Payments settings section was redesigned** around a standard card layout and subscription info, and **archived Polar products are skipped** in the billing listing so stale plans do not confuse the UI.
 
 It is small, but it means the metering and subscription story is being treated with the same care as the runtime — a good sign that the platform is growing into a product.
 
-## Toolchain and hygiene
+## 🧰 Toolchain and hygiene
 
 Finally, a round of deliberate maintenance keeps the workspace healthy. The CI moved to **pnpm 11** and **Node 24 LTS**, and deprecated config was migrated so the pipeline runs on current tooling. A large but targeted dependency refresh landed — `jsonwebtoken 11`, `async-nats 0.50`, `aya-ebpf 0.2`, `rtnetlink 0.21`, `rand 0.10`, `x25519-dalek 3`, and others — and where a bump threatened the workspace build, it was reverted rather than forced through.
 
 Worth calling out separately: the largest PR of the sprint went through a full **CodeRabbit review round-trip**, with the review feedback applied before the security work it touched was merged. A tool that enforces a second pair of eyes is an efficient way to keep quality from drifting when momentum is high.
 
-## In short
+## ✅ In short
 
 Mikrom looks the same on the surface, but it is a different platform underneath. It can now be brought up reproducibly with Terraform and Ansible, packaged as Debian packages, served from a Ceph-backed storage layer, watched through live log streaming and volume metrics, and secured at the repository level rather than the feature level.
 

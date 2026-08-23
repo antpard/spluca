@@ -9,7 +9,7 @@ timestamp: 2026-04-05T12:00:00+00:00
 filename: debugging-firecracker-containerd
 ---
 
-# Debugging firecracker-containerd from scratch
+# 🐞 Debugging firecracker-containerd from scratch
 
 [Mikrom](https://mikrom.es) runs Firecracker microVMs. Until now our `firecracker-agent` talked
 to Firecracker directly via its HTTP API — creating the VM, attaching drives, configuring the
@@ -26,7 +26,7 @@ silent in a different way. This post is a log of every error we hit and how we r
 
 ---
 
-## The setup
+## 🧱 The setup
 
 The host is a Debian Trixie machine with KVM available. The target architecture looks like this:
 
@@ -54,7 +54,7 @@ lifecycle calls back to the shim.
 
 ---
 
-## Error 1: snapshotter not loaded — naive
+## 🚨 Error 1: snapshotter not loaded — naive
 
 The first attempt used the config that came with our initial setup:
 
@@ -84,7 +84,7 @@ That requires a thin-pool device to exist first.
 
 ---
 
-## Error 2: devmapper thin-pool does not exist
+## 🚨 Error 2: devmapper thin-pool does not exist
 
 Setting up a devmapper thin-pool for development does not require LVM. Loop-device-backed
 files are enough:
@@ -113,7 +113,7 @@ dmsetup create fc-dev-thinpool \
 
 ---
 
-## Error 3: dmsetup not in PATH
+## 🚨 Error 3: dmsetup not in PATH
 
 The daemon starts the devmapper plugin during initialization. The plugin calls `dmsetup version`
 to check that the tool is available. On Debian, `dmsetup` lives in `/sbin`, which is not in the
@@ -140,7 +140,7 @@ succeeded.
 
 ---
 
-## Error 4: VM kernel hangs after "loop: module loaded"
+## 🚨 Error 4: VM kernel hangs after "loop: module loaded"
 
 The pull worked. The next step was `ctr run`:
 
@@ -175,7 +175,7 @@ After cleanup, the VM booted all the way to systemd.
 
 ---
 
-## Error 5: guest agent exits with code 1 — vsock EOF
+## 🚨 Error 5: guest agent exits with code 1 — vsock EOF
 
 With a clean state the VM now reached systemd and started the `firecracker-agent.service`.
 The daemon side showed rapid `EOF` errors instead of the previous `i/o timeout`:
@@ -222,7 +222,7 @@ agent exit 1
 
 ---
 
-## Error 6: glibc version mismatch in the guest agent
+## 🚨 Error 6: glibc version mismatch in the guest agent
 
 The `agent` binary inside `default-rootfs.img` was compiled on a Debian Bookworm/Ubuntu 22.04
 host (glibc ≥ 2.34). The rootfs ships Debian Bullseye, which has glibc 2.31.
@@ -248,7 +248,7 @@ mksquashfs /tmp/fc-rootfs \
 
 ---
 
-## It works
+## ✅ It works
 
 After the static rebuild:
 
@@ -264,7 +264,7 @@ A busybox shell inside a Firecracker microVM, booted from an OCI image via firec
 
 ---
 
-## Summary of fixes
+## 📋 Summary of fixes
 
 | Error | Root cause | Fix |
 |---|---|---|
@@ -275,7 +275,7 @@ A busybox shell inside a Firecracker microVM, booted from an OCI image via firec
 
 ---
 
-## What's next
+## 🔭 What's next
 
 The remaining step is wiring this up to the Mikrom API. The `firecracker-agent` gRPC service
 already delegates VM lifecycle to containerd — the `manager.go` calls `ctrd.Pull` and

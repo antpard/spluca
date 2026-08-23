@@ -9,7 +9,7 @@ timestamp: 2026-03-29T15:15:00+00:00
 filename: firecracker-and-buildpacks
 ---
 
-# From Source Code to Firecracker VM in One API Call: Integrating Cloud Native Buildpacks into Mikrom
+# 🚀 From Source Code to Firecracker VM in One API Call: Integrating Cloud Native Buildpacks into Mikrom
 
 [Mikrom](https://mikrom.es) is an orchestration layer for [Firecracker](https://firecracker-microvm.github.io/) microVMs. Until recently, creating a VM required you to already have a kernel and a root filesystem (`rootfs.ext4`) sitting somewhere on disk. That's fine for infrastructure operators, but it creates friction for developers who just want to run their application inside a microVM.
 
@@ -17,7 +17,7 @@ This post walks through how we integrated [Cloud Native Buildpacks](https://buil
 
 ---
 
-## The problem
+## 🧩 The problem
 
 Firecracker is not a container runtime. It boots a real Linux kernel and mounts a real ext4 filesystem. The typical workflow looks like this:
 
@@ -33,7 +33,7 @@ That's four manual steps before you even touch the VM API. We wanted to hide all
 
 ---
 
-## Architecture overview
+## 🏗️ Architecture overview
 
 Mikrom's backend (`mikrom-api`) already had an async worker pipeline built on [asynq](https://github.com/hibiken/asynq) and Redis. VM operations — create, start, stop, restart — are all enqueued as background tasks processed by a worker. The gRPC-based `firecracker-agent` running on bare-metal nodes does the actual heavy lifting.
 
@@ -62,7 +62,7 @@ POST /api/v1/vms/build
 
 ---
 
-## Step 1: A dedicated `buildpack` package
+## 📦 Step 1: A dedicated `buildpack` package
 
 We added `mikrom-api/internal/buildpack/builder.go` with two pure functions that wrap the external tooling.
 
@@ -123,7 +123,7 @@ func ExtractRootfs(ctx context.Context, imageName, outputPath string) error {
 
 ---
 
-## Step 2: A new worker task type
+## ⚙️ Step 2: A new worker task type
 
 We added `TypeBuildApp = "app:build"` to the existing task constants and a corresponding payload struct:
 
@@ -191,7 +191,7 @@ The task is enqueued on the `low` priority queue with a 30-minute timeout (build
 
 ---
 
-## Step 3: A new VM status
+## 🏷️ Step 3: A new VM status
 
 We added `VMStatusBuilding` to the status state machine:
 
@@ -204,7 +204,7 @@ This gives clients a clear signal that the VM exists in the database but is stil
 
 ---
 
-## Step 4: Service and handler
+## 🔌 Step 4: Service and handler
 
 The `VMService` received a new `BuildAndCreateVM` method. It accepts a `BuildVMRequest`, creates the VM record with `status: building`, and enqueues the task:
 
@@ -248,7 +248,7 @@ The route is registered as `POST /api/v1/vms/build`, placed before the `/:vm_id`
 
 ---
 
-## Using the new endpoint
+## 🌐 Using the new endpoint
 
 Here's the full developer experience, starting from source code:
 
@@ -288,7 +288,7 @@ The `builder` field is optional. If omitted it defaults to `paketobuildpacks/bui
 
 ---
 
-## Testing approach
+## 🧪 Testing approach
 
 Because `Build` and `ExtractRootfs` shell out to `pack` and `docker`, we can't mock them at the unit level without a full integration setup. Instead we test three things:
 
@@ -322,7 +322,7 @@ The service and handler layers are tested with a `MockWorkerClient` that capture
 
 ---
 
-## What's next
+## 🔭 What's next
 
 A few things are still on the roadmap:
 

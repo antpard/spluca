@@ -11,7 +11,7 @@ filename: log-of-a-week-of-work-on-scratch
 
 Seven days, 294 commits, 391 files touched, roughly 82,000 lines added against 9,700 removed. That is not a headline feature announcement, it is a log — the kind of week where a scraping platform stops being a demo of the happy path and starts absorbing the failure modes that only show up once real targets fight back. This post walks through what actually landed on [Scratch](/projects/scratch) this week, grouped by the problem each change was solving.
 
-## Extraction stops being all-or-nothing
+## 🧠 Extraction stops being all-or-nothing
 
 The oldest assumption in a CSS-selector scraper is that the selectors keep matching. They don't, forever. This week Scratch got a real answer to what happens when they stop.
 
@@ -23,7 +23,7 @@ Two narrower extraction bugs got fixed properly rather than worked around. RSS/A
 
 Rounding out the extraction surface: **bounded pagination crawling inside one execution**, so a single scraper run can walk multiple pages of a paginated source without being modeled as N separate executions, and a **extraction quality gate** merged to hold outputs to a minimum bar before they're accepted as a successful run.
 
-## The scraper stops lying about its own health
+## 🩺 The scraper stops lying about its own health
 
 Two reliability fixes this week share a theme: making the system honest about what it's actually doing, rather than optimistic.
 
@@ -33,18 +33,18 @@ The `/status` endpoint had a similar honesty gap: worker health was inferred pur
 
 Dispatch latency also got a direct fix: manually triggered ("Run Now") executions were sometimes queued for minutes because the job poller's backoff stretches to five minutes during idle periods. A new migration wires a Postgres trigger to `NOTIFY` on insert into `apalis.jobs`, and the worker now runs on `PostgresStorage::new_with_notify` — the poll fetcher stays as a fallback underneath, but the common case wakes the worker instantly instead of waiting out a backoff window.
 
-## A platform surface for other programs, not just people
+## 🔌 A platform surface for other programs, not just people
 
 This week Scratch grew an API surface meant to be consumed by code rather than clicked through. The API now **serves a real OpenAPI 3.1 document at `/openapi.json`**, generated from the route definitions themselves (via `rovo`), with an interactive `/docs` explorer — and a follow-up merge finished the job by folding the remaining public operations into that same generated document instead of leaving gaps. On top of that spec landed a **TypeScript SDK** (`@scratch/sdk`, zero runtime dependencies) and a **Python SDK** (`scratch-sdk`, stdlib only), both built from an OpenAPI snapshot exported as part of the same change so the clients can't silently drift from the API they describe.
 
 And, notably, an **stdio MCP server** (`scratch-mcp`) shipped this week, exposing scraping tools directly to AI agents over the Model Context Protocol — a `tools.rs`/`dispatch.rs`/`rpc.rs` split backed by a thin `api.rs` client against the existing REST surface, documented in its own usage guide. Between the OpenAPI document, the two SDKs, and the MCP server, Scratch went from "an API you read the source to integrate with" to a platform with three independent, generated-or-guided ways in.
 
-## Product surface: billing, auth, and a UI that finally looks industrial
+## 💳 Product surface: billing, auth, and a UI that finally looks industrial
 
 The commercial and account-security stories both grew up this week. **Billing now runs through Polar.sh** — checkout and webhooks wired end-to-end, with a fix to heal plan drift against Polar directly on billing-overview reads rather than trusting a possibly-stale local copy, and a fix so customers land back on `/settings?tab=plan` after checkout instead of a dead end. **TOTP-based 2FA** landed with a QR-code setup modal (`TwoFactorSetupDialog.tsx`), plus two correctness fixes that matter more than the happy path: the pending TOTP secret is now reused across repeated setup calls instead of being regenerated (which used to invalidate an authenticator app mid-setup), and a failed verify now shows the submitted code and secret fingerprint so a support conversation about "it's not working" has something concrete to look at. Session handling around auth got tightened too — a rejected credential no longer tears down an otherwise-valid session, and a rejected session now redirects to login instead of stranding the user on a dead page.
 
 The dashboard itself went through a deliberate visual pass this week — an **Apify-style, petroleum/cyan industrial console** theme, applied consistently across the scraper form (numbered, type-colored selector rows), the execution detail page (instrument-style meta chips), the executions list (status summaries, pagination, right-aligned output), and the scrapers table (tier-colored success rate). None of it changes what the platform does, but a console that looks like an instrument panel is easier to trust at a glance than one that looks like a form.
 
-## In short
+## ✅ In short
 
 None of this week's work is a single headline. It's the accumulation of a platform learning to fail gracefully — extraction that recovers and explains itself instead of returning silence, a worker that owns its browser instead of trusting a shared lock file, health signals that reflect what's actually running, and a public surface (OpenAPI, two SDKs, an MCP server) built for other programs to depend on. That is what a scraping platform looks like once it stops being tested against friendly pages and starts being tested against the web.

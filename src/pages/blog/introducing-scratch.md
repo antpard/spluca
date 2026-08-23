@@ -11,7 +11,7 @@ filename: introducing-scratch
 
 Most scraping projects start the same way: a script, a cron job, and a spreadsheet nobody trusts after the third schema change. **Scratch** is an attempt to build the thing that usually gets skipped — the operations layer around scraping, so that extracting data at scale is a platform capability instead of a pile of one-off scripts.
 
-## What Scratch is
+## 🕷️ What Scratch is
 
 Scratch is a small, opinionated system with four moving parts, [source available on GitHub](https://github.com/spluca/scratch):
 
@@ -24,7 +24,7 @@ The stack choices are deliberate rather than incidental. Rust/Axum gives the API
 
 Day-to-day development is Makefile-driven — `make api-dev`, `make ui-dev`, `make db-up` — with a matching set of `make ci*` targets that run the same Dagger stages CI does. That symmetry matters: a scraping platform lives or dies on whether failures are visible before they hit production, and getting identical validation locally and in CI removes an entire class of "works on my machine" incidents.
 
-## Why: clean data, not just scraped data
+## 🧹 Why: clean data, not just scraped data
 
 Scraping is not the hard part. Every serious data team has, at some point, written a script that pulls HTML off a page. The hard part — the part that actually has value — is turning that raw, inconsistent, constantly-drifting HTML into structured, deduplicated, schema-stable data that a downstream system can trust without a human checking it first.
 
@@ -32,7 +32,7 @@ That's the actual product Scratch is built toward: **clean, aggregated data as a
 
 The opt-in residential proxy network exists in service of that goal, not as a separate feature. Aggregated, cross-sector data is only valuable if it's collected reliably and ethically, and datacenter IPs get rate-limited or blocked precisely on the high-value, high-scale targets that make a dataset worth aggregating in the first place. Routing through a residential network — built on explicit opt-in rather than any form of covert traffic hijacking — is what keeps extraction stable enough to produce data with the freshness and completeness a paying buyer needs.
 
-## Get involved
+## 🤝 Get involved
 
 Scratch is early, and the parts that make it interesting to a systems or data engineer are exactly the parts that benefit from more eyes: the Axum API's execution model, the PostgreSQL schema for scraper and job state, the Dagger CI pipeline, and the residential proxy's node/gateway protocol.
 

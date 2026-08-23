@@ -9,13 +9,13 @@ timestamp: 2026-06-02T08:15:00+00:00
 filename: mikrom-june-2026-update
 ---
 
-# Mikrom June 2026 Update
+# 🚀 Mikrom June 2026 Update
 
 Mikrom is no longer just a deployment idea. It is a Rust-first platform-as-a-service with a complete workspace around it: control plane, routing plane, network services, a dashboard, a CLI, a builder, a scheduler, microVM bootstrapping, eBPF support, and a [Dagger](https://dagger.io/)-backed CI system that keeps the whole thing reproducible.
 
 The current shape of the project is important because it shows a platform that is trying to own the full lifecycle of an app, not only the final deployment step. From source code to OCI image, from scheduler decision to microVM runtime, from internal DNS to ingress routing, Mikrom is designed as a coherent system.
 
-## What is in the workspace
+## 🗺️ What is in the workspace
 
 The repository is broad by design, and each component has a clear role:
 
@@ -36,7 +36,7 @@ The repository is broad by design, and each component has a clear role:
 
 That layout makes the architecture easy to read: the control plane decides, the builder produces, the scheduler places, the agent runs, the router receives traffic, and the network services keep the system connected.
 
-## The stack behind it
+## 🧱 The stack behind it
 
 Mikrom is intentionally Rust-heavy, but the stack is broader than that. The repo currently leans on:
 
@@ -55,7 +55,7 @@ Mikrom is intentionally Rust-heavy, but the stack is broader than that. The repo
 
 That mix matters. Mikrom is not using Rust as a branding choice; Rust is the glue for a system that spans API services, worker processes, networking, and build automation.
 
-## PostgreSQL through Neon
+## 🐘 PostgreSQL through Neon
 
 One of the clearest product signals in the repository is the way databases are handled. PostgreSQL is provisioned through [Neon](https://neon.com/), and when workloads are deployed on the platform, the database runs in Cloud Hypervisor-backed microVMs.
 
@@ -63,7 +63,7 @@ That combination is elegant for two reasons. First, it avoids treating the datab
 
 For a platform like Mikrom, that makes a lot of sense. The user sees a simple deployment flow, but underneath, the system still preserves isolation and a clean operational boundary.
 
-## Networking: practical, IPv6-first, and inspired by 6PN
+## 🌐 Networking: practical, IPv6-first, and inspired by 6PN
 
 The networking story is one of the most interesting parts of Mikrom right now. The platform already has a WireGuard mesh, internal DNS, and route synchronization, but the design direction goes further than that.
 
@@ -78,7 +78,7 @@ In practice, that means Mikrom is trying to build a mesh that is:
 
 The important part is not that Mikrom copies another design. It is that it borrows a proven mental model and adapts it to its own control plane, agent, and DNS architecture.
 
-## The product surface has also matured
+## 🖥️ The product surface has also matured
 
 Mikrom is not only infrastructure. The dashboard and CLI show that the project is being shaped for day-to-day use.
 
@@ -86,7 +86,7 @@ The web app is built with SvelteKit and the modern Svelte ecosystem, which gives
 
 That is a meaningful distinction. A platform becomes much easier to adopt when its operational surface is not limited to a single interface style.
 
-## CI as part of the platform
+## 🧪 CI as part of the platform
 
 The recent engineering work in the repository points in a very deliberate direction: validation is being treated as part of the product.
 
@@ -101,7 +101,7 @@ The latest changes also show the kind of operational hardening that a growing pl
 
 This is not flashy work, but it is the work that makes a platform trustworthy.
 
-## What Mikrom looks like now
+## 📌 What Mikrom looks like now
 
 The current state of Mikrom is a project moving from architecture into system behavior.
 
@@ -116,7 +116,7 @@ It has:
 
 That combination is what makes the project interesting right now. Mikrom is not just assembling infrastructure parts. It is aligning them into a platform that can be operated, validated, and extended without losing its shape.
 
-## In short
+## ✅ In short
 
 Mikrom today is a Rust PaaS with a real workspace behind it, a modern stack, a clean separation of concerns, PostgreSQL provisioned through Neon, and a network direction influenced by fly.io’s 6PN model. The project’s direction is clear: build a platform that feels coherent from the CLI to the control plane, from the router to the mesh, and from local development to CI.
 

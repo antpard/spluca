@@ -9,7 +9,7 @@ timestamp: 2026-04-09T12:00:00+00:00
 filename: kubernetes-operator-for-mikrom
 ---
 
-# Building a Kubernetes Operator for Mikrom
+# ⚙️ Building a Kubernetes Operator for Mikrom
 
 [Mikrom](https://mikrom.es) is a microVM-as-a-service platform built on top of
 [Firecracker](https://firecracker-microvm.github.io/). Until now, VM lifecycle was driven by
@@ -25,7 +25,7 @@ The fix is a Kubernetes operator with a `MikromVM` Custom Resource Definition.
 
 ---
 
-## Why an operator
+## 🤔 Why an operator
 
 A Kubernetes operator is a controller that watches custom resources and reconciles the world
 toward the desired state declared in those resources. The pattern is exactly what we need:
@@ -41,7 +41,7 @@ Kubernetes-native control plane alongside it, then migrating the worker incremen
 
 ---
 
-## The repository
+## 📁 The repository
 
 We scaffolded `mikrom-operator` with [kubebuilder](https://book.kubebuilder.io/) 4.13.1:
 
@@ -55,7 +55,7 @@ Everything in Go 1.26 with controller-runtime v0.23.3.
 
 ---
 
-## The MikromVM CRD
+## 📜 The MikromVM CRD
 
 The spec maps directly to what `firecracker-agent` needs to create a VM:
 
@@ -103,7 +103,7 @@ can reach the right agent even if spec changes.
 
 ---
 
-## The reconciler
+## 🔁 The reconciler
 
 The reconciler is a state machine with four paths:
 
@@ -142,7 +142,7 @@ is already gone), we skip it and continue — idempotency matters in distributed
 
 ---
 
-## Talking to the agent
+## 🔌 Talking to the agent
 
 `firecracker-agent` exposes a gRPC service (`FirecrackerAgent`) with operations for the full
 VM lifecycle. We vendored the generated `pb.go` files from the agent repo into
@@ -174,7 +174,7 @@ type MikromVMReconciler struct {
 
 ---
 
-## Testing without a real cluster
+## 🧪 Testing without a real cluster
 
 Operator tests usually require either a live cluster or [envtest](https://book.kubebuilder.io/reference/envtest.html)
 (which downloads `kube-apiserver` + `etcd` binaries and starts them for the test suite). We
@@ -225,7 +225,7 @@ instead create the object normally, then call `fc.Delete()` to trigger the delet
 
 ---
 
-## What's next
+## 🔭 What's next
 
 The operator is running as a standalone controller. The migration of `mikrom-api` follows:
 
