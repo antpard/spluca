@@ -4,14 +4,19 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from "@tailwindcss/vite";
 import cloudflare from '@astrojs/cloudflare';
-import sentry from '@sentry/astro';
-import spotlightjs from '@spotlightjs/astro';
+import rehypeExternalLinks from 'rehype-external-links';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://spluca.org',
   integrations: [mdx(), sitemap()],
   markdown: {
+    rehypePlugins: [
+      [
+        rehypeExternalLinks,
+        { target: '_blank', rel: ['noopener', 'noreferrer'] },
+      ],
+    ],
     shikiConfig: {
       themes: {
         light: 'github-light',
@@ -20,6 +25,8 @@ export default defineConfig({
     },
   },
   adapter: cloudflare({
+    // Optimize images with sharp at build time -> static files, no runtime /_image endpoint
+    imageService: 'compile',
     platformProxy: {
       enabled: true
     }

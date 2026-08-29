@@ -1,11 +1,19 @@
 ---
+import { Image } from "astro:assets";
 import { GLOBAL } from "../../lib/variables";
+import profileImage from "../../assets/apardo.jpg";
 ---
 
 <div class="flex flex-col items-center sm:flex-row gap-8">
-  <img
-    src={GLOBAL.profileImage}
+  <Image
+    src={profileImage}
     alt={GLOBAL.username}
+    width={160}
+    height={160}
+    densities={[1, 2]}
+    format="webp"
+    loading="eager"
+    fetchpriority="high"
     class="rounded-full max-w-40 w-40 h-40 mb-4 z-0"
   />
   <div>

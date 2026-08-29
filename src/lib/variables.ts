@@ -55,8 +55,8 @@ export const GLOBAL = {
   experienceShortDescription: "A list of my experiences.",
   experienceLongDescription: "All of my experiences.",
 
-  // Profile image
-  profileImage: "apardo.png",
+  // Profile image (used for structured data / social cards)
+  profileImage: "apardo-512.jpg",
 
   // Menu items
   menu: {

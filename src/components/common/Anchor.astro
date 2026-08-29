@@ -16,6 +16,7 @@ const { url, external, class: className } = Astro.props;
     className,
   ]}
   target={external ? "_blank" : "_self"}
+  rel={external ? "noopener noreferrer" : undefined}
   aria-label={Astro.props["aria-label"]}
 >
   <slot />

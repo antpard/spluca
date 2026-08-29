@@ -35,4 +35,8 @@ Required frontmatter fields:
 
 `wrangler.jsonc` configures the Cloudflare Worker. The site uses Smart Placement and has observability (logs + traces) enabled. Routes cover `spluca.org`, `www.spluca.org`, and `apardo.spluca.org`.
 
-Sentry is integrated via `@sentry/astro` for error tracking in production.
+### Assets & performance
+
+- Fonts are self-hosted (`public/fonts/*.woff2`, `@font-face` in `src/styles/global.css`); the primary weights are preloaded in `Layout.astro`. No third-party font CDNs.
+- Content images that need optimization go through `astro:assets` `<Image>` with a source under `src/assets/` (see `Hero.astro`). `sharp` runs at build time. Raw files in `public/` are served as-is.
+- `public/_headers` sets `Cache-Control` for fonts, images, and feeds; the Cloudflare adapter injects the immutable rule for `/_astro/*`.

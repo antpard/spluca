@@ -1,0 +1,27 @@
+# Hashed build assets — safe to cache forever
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Self-hosted fonts — stable filenames, rarely change
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Static images from /public — cache a month, revalidate in background
+/*.jpg
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+/*.png
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+/*.webp
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+/*.avif
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+/*.svg
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+
+# Feeds and sitemaps — short cache
+/rss.xml
+  Cache-Control: public, max-age=3600
+/sitemap-index.xml
+  Cache-Control: public, max-age=3600
+/sitemap-0.xml
+  Cache-Control: public, max-age=3600
