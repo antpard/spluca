@@ -3,7 +3,7 @@ layout: ../../layouts/ProjectLayout.astro
 title: Scratch
 description: Web-scraping operations platform with a Next.js dashboard, Rust services, AI-assisted extraction, and an opt-in residential proxy network.
 tags: ["Rust", "Next.js", "Web Scraping", "MCP", "PostgreSQL"]
-githubUrl: https://github.com/spluca/scratch
+githubUrl:
 liveUrl: https://scratch.spluca.org/
 featured: true
 timestamp: "2026-08-29"
