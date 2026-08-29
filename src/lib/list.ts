@@ -1,5 +1,6 @@
 import type { ArticleFrontmatter, ProjectFrontmatter, ServiceFrontmatter } from "./types";
 import { getShortDescription, processContentInDir } from "./utils";
+import { createTagIndex } from "./tags";
 
 export const articles = (
   await processContentInDir<ArticleFrontmatter, ArticleFrontmatter>(
@@ -72,3 +73,5 @@ export const services = (
   const dateB = new Date(b.timestamp);
   return dateB.getTime() - dateA.getTime();
 });
+
+export const tagEntries = createTagIndex({ articles, services, projects });

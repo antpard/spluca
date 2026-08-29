@@ -9,6 +9,7 @@ import Anchor from "../components/common/Anchor.astro";
 import { GLOBAL } from "../lib/variables";
 import Seo from "../components/Seo.astro";
 import { breadcrumbSchema, softwareSourceCodeSchema } from "../lib/seo";
+import TagLink from "../components/TagLink.astro";
 
 
 type Props = MarkdownLayoutProps<ProjectFrontmatter>;
@@ -42,9 +43,7 @@ const sourceUrl = generateSourceUrl(frontmatter.filename, "projects");
         {
           frontmatter.tags
             ? frontmatter.tags.map((tag) => (
-                <span class="-zag-text -zag-bg zag-transition font-semibold py-1 px-2">
-                  {tag}
-                </span>
+                <TagLink tag={tag} />
               ))
             : null
         }

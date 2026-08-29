@@ -1,0 +1,51 @@
+---
+import ArticleSnippet from "./ArticleSnippet.astro";
+import ProjectSnippet from "./ProjectSnippet.astro";
+import ServiceSnippet from "./ServiceSnippet.astro";
+import type { ArticleFrontmatter, ProjectFrontmatter, ServiceFrontmatter } from "../lib/types";
+
+type Props = {
+  title: string;
+  id: string;
+  kind: "articles" | "services" | "projects";
+  items: (ArticleFrontmatter | ServiceFrontmatter | ProjectFrontmatter)[];
+};
+
+const { title, id, kind, items } = Astro.props;
+---
+
+<section id={id} class="pt-8 scroll-mt-8">
+  <h2 class="font-display text-xl sm:text-2xl leading-loose mb-8">{title}</h2>
+  <ul>
+    {items.map((item) => (
+      <li>
+        {kind === "articles" ? (
+          <ArticleSnippet
+            title={item.title}
+            description={item.description}
+            url={item.filename}
+            duration={`${(item as ArticleFrontmatter).time} min`}
+            timestamp={item.timestamp}
+            tags={item.tags}
+          />
+        ) : kind === "services" ? (
+          <ServiceSnippet
+            title={item.title}
+            description={item.description}
+            url={item.filename}
+            tags={item.tags ?? []}
+          />
+        ) : (
+          <ProjectSnippet
+            title={item.title}
+            description={item.description}
+            url={item.filename}
+            githubUrl={(item as ProjectFrontmatter).githubUrl}
+            liveUrl={(item as ProjectFrontmatter).liveUrl}
+            tags={item.tags ?? []}
+          />
+        )}
+      </li>
+    ))}
+  </ul>
+</section>

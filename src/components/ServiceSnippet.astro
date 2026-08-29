@@ -1,5 +1,6 @@
 ---
 import Anchor from "./common/Anchor.astro";
+import TagLink from "./TagLink.astro";
 
 export type Props = {
   title: string;
@@ -23,9 +24,7 @@ const { title, description, url, tags } = Astro.props;
   <div class="flex flex-row wrap gap-2">
     {
       tags.map((tag) => (
-        <span class="-zag-text -zag-bg zag-transition px-2 py-1 text-sm font-semibold">
-          {tag}
-        </span>
+        <TagLink tag={tag} />
       ))
     }
   </div>

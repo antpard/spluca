@@ -1,0 +1,76 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Section from "../../components/common/Section.astro";
+import Seo from "../../components/Seo.astro";
+import TagResults from "../../components/TagResults.astro";
+import { getTagEntry } from "../../lib/tags";
+import { tagEntries } from "../../lib/list";
+import { breadcrumbSchema, collectionPageSchema } from "../../lib/seo";
+import { GLOBAL } from "../../lib/variables";
+import type { TagEntry } from "../../lib/tags";
+
+export function getStaticPaths() {
+  return tagEntries.map((entry) => ({
+    params: { tag: entry.slug },
+    props: { entry },
+  }));
+}
+
+type Props = {
+  entry: TagEntry;
+};
+
+const { entry: staticEntry } = Astro.props;
+const entry = staticEntry ?? getTagEntry(tagEntries, Astro.params.tag ?? "");
+if (!entry) {
+  return Astro.redirect("/404");
+}
+
+const resultGroups = [
+  { id: "articles", title: GLOBAL.articlesName, kind: "articles" as const, items: entry.items.articles },
+  { id: "services", title: GLOBAL.servicesName, kind: "services" as const, items: entry.items.services },
+  { id: "projects", title: GLOBAL.projectsName, kind: "projects" as const, items: entry.items.projects },
+].filter((group) => group.items.length > 0);
+const description = `Posts, services, and projects tagged ${entry.label}.`;
+---
+
+<Layout>
+  <Fragment slot="head">
+    <Seo
+      title={`${entry.label} • ${GLOBAL.username}`}
+      description={description}
+      canonicalPath={`/tags/${entry.slug}`}
+      jsonLd={[
+        collectionPageSchema({ name: entry.label, description, path: `/tags/${entry.slug}` }),
+        breadcrumbSchema([
+          { name: GLOBAL.username, path: "/" },
+          { name: "Tags", path: "/tags" },
+          { name: entry.label, path: `/tags/${entry.slug}` },
+        ]),
+      ]}
+    />
+  </Fragment>
+  <Section class="py-4 my-8">
+    <div class="flex flex-col gap-4 pt-8 pb-8">
+      <p class="zag-muted zag-transition">Tag</p>
+      <h1 class="font-display text-3xl sm:text-4xl leading-tight">{entry.label}</h1>
+    </div>
+    {resultGroups.length > 1 ? (
+      <nav aria-label="Content types" class="flex flex-wrap gap-4 pb-8">
+        {resultGroups.map((group) => (
+          <a class="zag-offset underline font-medium" href={`#${group.id}`}>
+            {group.title}
+          </a>
+        ))}
+      </nav>
+    ) : null}
+    {resultGroups.map((group) => (
+      <TagResults
+        title={group.title}
+        id={group.id}
+        kind={group.kind}
+        items={group.items}
+      />
+    ))}
+  </Section>
+</Layout>

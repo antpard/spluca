@@ -11,7 +11,7 @@ test("absoluteUrl normalizes site paths without trailing slashes", () => {
 
 test("sameAsLinks excludes empty social profiles", () => {
   assert.deepEqual(sameAsLinks(), [
-    "https://github.com/spluca",
+    "https://github.com/antpard",
     "https://www.linkedin.com/in/antpard",
   ]);
 });

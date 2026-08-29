@@ -8,6 +8,7 @@ import Section from "../components/common/Section.astro";
 import { GLOBAL } from "../lib/variables";
 import Seo from "../components/Seo.astro";
 import { breadcrumbSchema, serviceSchema } from "../lib/seo";
+import TagLink from "../components/TagLink.astro";
 
 
 type Props = MarkdownLayoutProps<ServiceFrontmatter>;
@@ -41,9 +42,7 @@ const sourceUrl = generateSourceUrl(frontmatter.filename, "services");
         {
           frontmatter.tags
             ? frontmatter.tags.map((tag) => (
-                <span class="-zag-text -zag-bg zag-transition font-semibold py-1 px-2">
-                  {tag}
-                </span>
+                <TagLink tag={tag} />
               ))
             : null
         }
