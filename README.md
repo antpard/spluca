@@ -1,68 +1,65 @@
-# Astro Starter Kit: Blog
+# Spluca
 
-```sh
-pnpm create astro@latest -- --template blog
-```
+Spluca is the personal website of Antonio Pardo Sánchez, a platform architect
+and systems engineer. It brings together technical writing, open-source and
+product engineering projects, and professional services related to cloud
+infrastructure, Linux, Rust, Kubernetes, backend systems, and microVMs.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/blog)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/blog/devcontainer.json)
+The site is available at [spluca.org](https://spluca.org) and includes:
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- **Articles** about cloud architecture, Linux systems, Rust, Kubernetes,
+  Firecracker, microVMs, backend engineering, and open-source platform
+  development.
+- **Projects** covering cloud platforms, backend services, infrastructure
+  tooling, and microVM systems.
+- **Services** for cloud architecture, backend development, Linux systems
+  administration, Kubernetes platforms, infrastructure automation, and
+  production operations.
+- **Contact** information for professional enquiries.
 
-![blog](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
+## Technology
 
-Features:
+The site is built with [Astro](https://astro.build/), TypeScript, Markdown,
+MDX, and Tailwind CSS. It is deployed to [Cloudflare Workers](https://workers.cloudflare.com/)
+using Astro's Cloudflare adapter.
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+Content is authored as Markdown files under `src/pages/`. Astro generates the
+routes and the production site at build time, while the Cloudflare adapter
+packages the result as a Worker with static assets.
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+## Project structure
 
 ```text
-├── public/
+├── public/                 # Static assets, fonts, and headers
 ├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
+│   ├── components/         # Reusable Astro components
+│   ├── layouts/            # Page layouts for the site sections
+│   ├── lib/                # Content loading, metadata, SEO, and utilities
+│   ├── pages/blog/         # Technical articles
+│   ├── pages/projects/     # Project descriptions
+│   └── pages/services/     # Service descriptions
+├── test/                   # SEO and navigation tests
+├── astro.config.mjs        # Astro and Cloudflare configuration
+└── wrangler.jsonc          # Cloudflare Worker configuration
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Development
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Install the dependencies and start the local development server:
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+```sh
+pnpm install
+pnpm dev
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+The development site is served at `http://localhost:4321`.
 
-## 🧞 Commands
+Useful commands:
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+| Command | Description |
+| :-- | :-- |
+| `pnpm test` | Run the site tests |
+| `pnpm build` | Build the production site in `dist/` |
+| `pnpm preview` | Build and run the site locally with Wrangler |
+| `pnpm deploy` | Build and deploy the site to Cloudflare Workers |
+| `pnpm astro ...` | Run an Astro CLI command |
