@@ -7,6 +7,13 @@ export const GLOBAL = {
   shortDescription: "Platform Architect | Cloud, Linux, Rust, Kubernetes, and MicroVM Systems",
   longDescription:
     "Antonio Pardo Sánchez is a platform architect and systems engineer with nearly 25 years of experience designing cloud infrastructure, Linux platforms, backend systems, Kubernetes services, and microVM-based products.",
+  heroEyebrow: "Platform architect · Systems engineer",
+  heroTitle: "I build reliable platforms for teams shipping hard software.",
+  heroDescription:
+    "Cloud infrastructure, backend systems, Linux, Kubernetes, and microVMs — from architecture to production.",
+  heroProof: "Nearly 25 years · Remote international work · Cloud to production",
+  heroPrimaryCta: "Discuss your system",
+  heroSecondaryCta: "Explore projects",
 
   // Social media links
   githubProfile: "https://github.com/antpard",

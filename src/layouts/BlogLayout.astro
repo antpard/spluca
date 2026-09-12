@@ -8,6 +8,7 @@ import { blogPostingSchema, breadcrumbSchema } from "../lib/seo";
 import type { MarkdownLayoutProps } from "astro";
 import Prose from "../components/Prose.astro";
 import TagLink from "../components/TagLink.astro";
+import Anchor from "../components/common/Anchor.astro";
 import Layout from "./Layout.astro";
 
 type Props = MarkdownLayoutProps<ArticleFrontmatter>;
@@ -57,6 +58,12 @@ const sourceUrl = generateSourceUrl(frontmatter.filename, "blog");
     <Prose>
       <slot />
     </Prose>
-    <p class="pt-8">~{GLOBAL.username}</p>
+    <div class="flex flex-col gap-4 pt-8">
+      <p>~{GLOBAL.username}</p>
+      <div class="flex flex-wrap gap-4">
+        <Anchor url="/blog">Back to all articles</Anchor>
+        <a class="text-red-400 hover:underline" href="/contact">Discuss a related system</a>
+      </div>
+    </div>
   </Section>
 </Layout>

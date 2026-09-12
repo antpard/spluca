@@ -31,3 +31,29 @@ test("mobile navigation starts hidden in CSS", async () => {
   assert.match(header, /-translate-y-full sm:translate-y-0/);
   assert.doesNotMatch(header, /nav!\.style\.transform/);
 });
+
+test("shared personal hub CTA styles are defined", async () => {
+  const styles = await readFile("src/styles/global.css", "utf8");
+
+  assert.match(styles, /\.zag-cta-primary/);
+  assert.match(styles, /\.zag-cta-secondary/);
+  assert.match(styles, /\.zag-nav-active/);
+});
+
+test("personal hub conversion copy is centralized", async () => {
+  const variables = await readFile("src/lib/variables.ts", "utf8");
+
+  assert.match(variables, /heroEyebrow:/);
+  assert.match(variables, /heroPrimaryCta:/);
+  assert.match(variables, /heroSecondaryCta:/);
+});
+
+test("primary navigation exposes accessible menu state and active routes", async () => {
+  const header = await readFile("src/components/Header.astro", "utf8");
+
+  assert.match(header, /aria-expanded="false"/);
+  assert.match(header, /aria-controls="primary-navigation"/);
+  assert.match(header, /aria-current=\{isActive\(url\) \? "page"/);
+  assert.match(header, /url="\/"/);
+  assert.match(header, /filter\(\(\[label\]\) => label !== "home" && label !== "contact"\)/);
+});

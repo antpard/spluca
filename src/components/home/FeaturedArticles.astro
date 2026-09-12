@@ -15,10 +15,13 @@ const { featuredArticles } = Astro.props;
   <h3 class="font-display text-lg sm:text-xl leading-loose">{GLOBAL.articlesName}</h3>
   <Anchor url="/blog" class="text-base">{GLOBAL.viewAll}</Anchor>
 </div>
+<p class="zag-muted zag-transition mt-3 max-w-2xl">
+  Notes on cloud architecture, backend systems, Linux, Kubernetes, and the systems behind them.
+</p>
 <ul class="my-8">
   {
     (featuredArticles.length === 0 && <p>{GLOBAL.noArticles}</p>) ||
-      featuredArticles.slice(0, 5).map((article) => (
+      featuredArticles.slice(0, 5).map((article, index) => (
         <li>
           <ArticleSnippet
             title={article.title}
@@ -26,6 +29,7 @@ const { featuredArticles } = Astro.props;
             url={article.filename}
             timestamp={article.timestamp}
             duration={`${article.time} min`}
+            featured={index === 0}
           />
         </li>
       ))

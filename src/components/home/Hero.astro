@@ -2,9 +2,10 @@
 import { Image } from "astro:assets";
 import { GLOBAL } from "../../lib/variables";
 import profileImage from "../../assets/apardo.png";
+import Anchor from "../common/Anchor.astro";
 ---
 
-<div class="flex flex-col items-center sm:flex-row gap-8">
+<div class="flex flex-col items-center sm:flex-row gap-8 sm:gap-12">
   <Image
     src={profileImage}
     alt={GLOBAL.username}
@@ -16,16 +17,24 @@ import profileImage from "../../assets/apardo.png";
     fetchpriority="high"
     class="rounded-full max-w-40 w-40 h-40 mb-4 z-0"
   />
-  <div>
+  <div class="flex flex-col items-center sm:items-start gap-5">
+    <p class="zag-muted zag-transition text-sm font-semibold uppercase tracking-wide">
+      {GLOBAL.heroEyebrow}
+    </p>
     <h1
-      class="text-3xl sm:text-4xl font-display font-semibold opsz text-center sm:text-left"
+      class="text-3xl sm:text-4xl font-mono font-semibold text-center sm:text-left leading-tight"
     >
-      {GLOBAL.username}
+      {GLOBAL.heroTitle}
     </h1>
-    <h2
-      class="text-center text-xl sm:text-2xl font-mono font-medium sm:text-left"
-    >
-      <p set:html={GLOBAL.shortDescription}/>
-    </h2>
+    <p class="text-lg sm:text-xl text-center sm:text-left max-w-2xl">
+      {GLOBAL.heroDescription}
+    </p>
+    <div class="flex flex-wrap justify-center sm:justify-start gap-3">
+      <Anchor url="/contact" class="zag-cta-primary">{GLOBAL.heroPrimaryCta}</Anchor>
+      <Anchor url="/projects" class="zag-cta-secondary">{GLOBAL.heroSecondaryCta}</Anchor>
+    </div>
+    <p class="zag-muted zag-transition text-sm text-center sm:text-left">
+      {GLOBAL.heroProof}
+    </p>
   </div>
 </div>

@@ -153,6 +153,65 @@ test("home article data includes all blog posts before the display limit", async
   assert.match(articleBlock, /\.sort\(\(a, b\) =>/);
 });
 
+test("home exposes both conversion and proof paths", async () => {
+  const [home, hero] = await Promise.all([
+    readFile("src/pages/index.astro", "utf8"),
+    readFile("src/components/home/Hero.astro", "utf8"),
+  ]);
+
+  assert.match(home, /url="\/contact"/);
+  assert.match(hero, /GLOBAL\.heroEyebrow/);
+  assert.match(hero, /GLOBAL\.heroProof/);
+  assert.match(hero, /url="\/projects"/);
+});
+
+test("home sections have distinct service, project, and editorial hierarchy", async () => {
+  const home = await readFile("src/pages/index.astro", "utf8");
+
+  assert.ok(home.indexOf("<FeaturedServices") < home.indexOf("<FeaturedProjects"));
+  assert.ok(home.indexOf("<FeaturedProjects") < home.indexOf("<FeaturedArticles"));
+  assert.match(home, /Have a difficult system to solve/);
+  assert.match(home, /url="\/contact"/);
+});
+
+test("home previews preserve useful metadata and descriptive project actions", async () => {
+  const [articles, projects] = await Promise.all([
+    readFile("src/components/home/FeaturedArticles.astro", "utf8"),
+    readFile("src/components/ProjectSnippet.astro", "utf8"),
+  ]);
+
+  assert.match(articles, /featuredArticles\.slice\(0, 5\)/);
+  assert.match(articles, /timestamp/);
+  assert.match(articles, /duration/);
+  assert.match(projects, /View repository/);
+  assert.match(projects, /Open live product/);
+});
+
+test("content indexes expose their primary decision paths", async () => {
+  const [services, projects, blog] = await Promise.all([
+    readFile("src/pages/services/index.astro", "utf8"),
+    readFile("src/pages/projects/index.astro", "utf8"),
+    readFile("src/pages/blog/index.astro", "utf8"),
+  ]);
+
+  assert.match(services, /How I work/);
+  assert.match(services, /Start a conversation/);
+  assert.match(projects, /Selected projects/);
+  assert.match(blog, /Featured article/);
+});
+
+test("detail layouts offer a meaningful next step", async () => {
+  const [service, project, article] = await Promise.all([
+    readFile("src/layouts/ServiceLayout.astro", "utf8"),
+    readFile("src/layouts/ProjectLayout.astro", "utf8"),
+    readFile("src/layouts/BlogLayout.astro", "utf8"),
+  ]);
+
+  assert.match(service, /href="\/contact"/);
+  assert.match(project, /href="\/contact"/);
+  assert.match(article, /url="\/blog"/);
+});
+
 test("faqPageSchema exposes question and answer entities", () => {
   assert.deepEqual(faqPageSchema([
     { question: "Who is this service for?", answer: "International engineering teams." },

@@ -15,6 +15,9 @@ const { featuredServices } = Astro.props;
   <h3 class="font-display text-lg sm:text-xl leading-loose">{GLOBAL.servicesName}</h3>
   <Anchor url="/services" class="text-base">{GLOBAL.viewAll}</Anchor>
 </div>
+<p class="zag-muted zag-transition mt-3 max-w-2xl">
+  Focused help for production systems that need clearer architecture, stronger operations, or hands-on implementation.
+</p>
 <ul class="my-8">
   {
     (featuredServices.length === 0 && <p>{GLOBAL.noServices}</p>) ||
