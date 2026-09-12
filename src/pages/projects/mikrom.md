@@ -68,3 +68,19 @@ Ansible is authoritative for host configuration, environment files, systemd serv
 The recent Git history shows Mikrom moving from platform breadth toward production delivery and operational hardening: the dashboard was migrated to Skeleton and given stronger loading, accessibility, and error states; deployment history, rollback, snapshots, metrics, memory resize, and command-palette workflows were expanded; tenant isolation and security audit waves were added; and the public ingress was migrated to Cloudflare with managed domains, a tunnel, WAF controls, and R2 artifact restore procedures. The landing site now includes bilingual company pages, contact handling, a dark theme, and a dedicated documentation surface.
 
 Mikrom is therefore both a working Rust cloud platform and an operations-focused infrastructure project: it covers the path from Git commit to isolated workload, while keeping deployment, observability, networking, security, and recovery visible in the repository.
+
+## Case study: building an isolated edge platform
+
+### The engineering challenge
+
+Mikrom brings together a developer-facing PaaS workflow and a self-hosted execution plane. The platform needs to turn source repositories into deployable workloads while keeping scheduling, networking, recovery, and tenant boundaries explicit across a distributed system.
+
+### The approach
+
+The control plane records application and deployment state, the builder produces OCI images, and the scheduler coordinates workers that run workloads inside Firecracker or Cloud Hypervisor microVMs. A separate Pingora-based router and WireGuard-aware network layer handle traffic and connectivity around those workloads.
+
+This is the kind of work covered by [Kubernetes platform engineering](/services/kubernetes-platform-engineering) and [cloud architecture and infrastructure](/services/cloud-architecture): the platform is designed around operational visibility, isolation, and recovery rather than a single deployment command.
+
+### What the project demonstrates
+
+The repository makes the full path visible—from Git commit and image build to isolated execution, routed traffic, logs, metrics, snapshots, and rollback-related operations. It is an ongoing open-source platform project, so this case study describes the engineering scope and architecture rather than claiming a customer result.

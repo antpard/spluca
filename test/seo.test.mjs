@@ -80,3 +80,15 @@ test("services include focused pages for Kubernetes and systems backend work", a
   assert.match(servicePages[1], /title: "Rust & Go Backend Development/);
   assert.match(servicePages[1], /Production backend services/);
 });
+
+test("project pages expose evidence-based case studies with service links", async () => {
+  const [mikrom, scratch] = await Promise.all([
+    readFile("src/pages/projects/mikrom.md", "utf8"),
+    readFile("src/pages/projects/scratch.md", "utf8"),
+  ]);
+
+  assert.match(mikrom, /## Case study: building an isolated edge platform/);
+  assert.match(mikrom, /\]\(\/services\/kubernetes-platform-engineering\)/);
+  assert.match(scratch, /## Case study: operating reliable data extraction/);
+  assert.match(scratch, /\]\(\/services\/rust-go-backend-development\)/);
+});

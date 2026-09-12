@@ -64,3 +64,19 @@ The proxy subsystem is designed for explicit opt-in participation: a node runs o
 The recent Git history shows Scratch evolving from a scraper dashboard into a broader data-operations platform: the scraper gained crawling, browser actions, JSON/open-data sources, auto-extraction, Markdown exports, quality gates, selector repair, scheduling, change detection, and notifications; the residential gateway gained native TLS, geo-targeting, and sticky sessions; and the API gained organizations, invitations, roles, audit logs, billing, OpenAPI, SDKs, and MCP access. The latest work also completed the Skeleton/Crimson dashboard migration and added bilingual landing pages with a Cloudflare contact form.
 
 Scratch is therefore both a practical operator UI and a composable data platform: it covers the path from scraper definition to validated extracted data, while keeping automation, proxying, observability, billing, and AI-assisted recovery visible in the repository.
+
+## Case study: operating reliable data extraction
+
+### The engineering challenge
+
+Scraping workflows need to handle different page types, browser behavior, schedules, proxies, extraction rules, and partial failures while keeping the resulting data and execution state understandable to operators.
+
+### The approach
+
+Scratch separates durable orchestration from the expensive scraping runtime. The Rust/Axum API validates and records work, NATS JetStream delivers jobs to the scraper worker, and the worker handles direct HTTP, Chromium rendering, browser actions, bounded crawling, and structured extraction. Quality gates, retries, limits, and visible execution states keep unsuccessful or incomplete runs from disappearing.
+
+This connects naturally with [Rust and Go backend development](/services/rust-go-backend-development) and [cloud architecture and infrastructure](/services/cloud-architecture): the platform uses explicit service boundaries and operational controls for a failure-prone workload.
+
+### What the project demonstrates
+
+The repository covers a complete path from scraper definition through validated rows and exports, with REST, SDK, dashboard, and MCP access. It also documents opt-in proxying, SSRF protection, observability, billing, and selector-repair workflows without making unsupported customer or traffic claims.
