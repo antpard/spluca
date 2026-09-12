@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/ServiceLayout.astro
 title: "Cloud Architecture & Infrastructure"
-description: "Design and implementation of scalable cloud-native architectures using containerization, microservices, and infrastructure-as-code. Specialized in Kubernetes, Firecracker microVMs, and serverless platforms."
+description: "Cloud infrastructure consulting and implementation for teams that need more reliable, secure, and maintainable systems. Specialized in Kubernetes, Firecracker microVMs, serverless platforms, and infrastructure as code."
 tags: ["Cloud", "Kubernetes", "Firecracker", "Serverless", "Infrastructure"]
 featured: true
 timestamp: "2026-04-06"
@@ -10,7 +10,7 @@ filename: "cloud-architecture"
 
 ## Overview
 
-I provide end-to-end cloud architecture consulting and implementation services, focusing on building resilient, scalable, and cost-effective infrastructure solutions.
+I provide cloud infrastructure consulting and implementation for international teams dealing with reliability, security, or operating costs that have outgrown their current platform. I turn those constraints into a practical architecture that your team can operate and evolve.
 
 ## What's Included
 

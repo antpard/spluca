@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/ServiceLayout.astro
 title: "Linux System Administration"
-description: "From the kernel up — package management, firewalls, networking, and hardening for Red Hat and Debian-based systems. Production-ready infrastructure you can trust."
+description: "Linux server hardening, administration, and incident-focused support for Red Hat and Debian-based systems. Improve security, networking, patching, and reliability across VPS, cloud, and bare-metal infrastructure."
 tags: ["Linux", "SysAdmin", "Red Hat", "Debian", "Security", "Networking"]
 featured: true
 timestamp: "2026-04-07"
@@ -10,7 +10,7 @@ filename: "linux-system-administration"
 
 ## Overview
 
-I manage and optimize Linux systems from the kernel up, ensuring your servers are secure, performant, and reliable. Whether you're running a handful of VPS instances or a large fleet of bare-metal servers, I bring deep expertise in both Red Hat and Debian ecosystems to keep your infrastructure running smoothly.
+I help teams facing security gaps, recurring incidents, or unclear operational ownership regain control of their Linux infrastructure. I manage and optimize systems from the kernel up, from a handful of VPS instances to a fleet of bare-metal servers, across both Red Hat and Debian ecosystems.
 
 ## Red Hat Ecosystem
 

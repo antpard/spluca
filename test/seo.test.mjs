@@ -222,3 +222,31 @@ test("about page is discoverable and positioned for international clients", asyn
   assert.match(page, /href="\/services"/);
   assert.match(page, /href="\/contact"/);
 });
+
+test("service metadata matches high-intent international searches", async () => {
+  const [cloud, kubernetes, backend, linux] = await Promise.all([
+    readFile("src/pages/services/cloud-architecture.md", "utf8"),
+    readFile("src/pages/services/kubernetes-platform-engineering.md", "utf8"),
+    readFile("src/pages/services/backend-development.md", "utf8"),
+    readFile("src/pages/services/linux-system-administration.md", "utf8"),
+  ]);
+
+  assert.match(cloud, /cloud infrastructure consulting/);
+  assert.match(kubernetes, /Kubernetes platform consulting/);
+  assert.match(backend, /Backend development for international teams/);
+  assert.match(linux, /Linux server hardening/);
+});
+
+test("service introductions describe client problems before listing technologies", async () => {
+  const [cloud, kubernetes, backend, linux] = await Promise.all([
+    readFile("src/pages/services/cloud-architecture.md", "utf8"),
+    readFile("src/pages/services/kubernetes-platform-engineering.md", "utf8"),
+    readFile("src/pages/services/backend-development.md", "utf8"),
+    readFile("src/pages/services/linux-system-administration.md", "utf8"),
+  ]);
+
+  assert.match(cloud, /reliability, security, or operating costs/);
+  assert.match(kubernetes, /delivery bottlenecks or operational risk/);
+  assert.match(backend, /slow delivery, unreliable integrations, or difficult-to-change services/);
+  assert.match(linux, /security gaps, recurring incidents, or unclear operational ownership/);
+});

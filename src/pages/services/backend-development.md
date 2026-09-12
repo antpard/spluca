@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/ServiceLayout.astro
 title: "Backend Development — Ruby, Go & Rust"
-description: "High-performance backend services and APIs built with Ruby on Rails, Go, and Rust. From rapid prototyping to systems-level performance."
+description: "Backend development for international teams using Ruby on Rails, Go, and Rust. Build reliable APIs and services for faster delivery, clearer operations, and systems-level performance where it matters."
 tags: ["Ruby", "Go", "Rust", "Backend", "APIs", "Microservices"]
 featured: true
 timestamp: "2026-04-05"
@@ -10,7 +10,7 @@ filename: "backend-development"
 
 ## Overview
 
-I design and build robust backend systems tailored to your needs, leveraging the right language for the job. Whether you need rapid development with Ruby, concurrent services with Go, or zero-cost abstractions with Rust, I deliver production-ready code.
+I help international teams replace slow delivery, unreliable integrations, or difficult-to-change services with robust backends that fit their actual constraints. I choose the right language for the job: rapid development with Ruby, concurrent services with Go, or systems-level control with Rust.
 
 ## Ruby
 

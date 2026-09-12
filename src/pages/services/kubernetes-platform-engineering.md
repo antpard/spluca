@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/ServiceLayout.astro
 title: "Kubernetes Platform Engineering"
-description: "Design and improve reliable Kubernetes platforms for teams that need safer deployments, clearer operations, and predictable production workloads."
+description: "Kubernetes platform consulting for teams that need safer deployments, clearer operations, and predictable production workloads. Design and improve a platform your engineers can operate with confidence."
 tags: ["Kubernetes", "Platform Engineering", "Containers", "DevOps", "Observability"]
 featured: true
 timestamp: "2026-04-08"
@@ -10,7 +10,7 @@ filename: "kubernetes-platform-engineering"
 
 ## Build a reliable Kubernetes platform
 
-I help international engineering teams design, operate, and improve Kubernetes platforms without adding unnecessary operational complexity. The goal is a platform your developers can use confidently and your operations team can understand when something goes wrong.
+I provide Kubernetes platform consulting for international engineering teams facing delivery bottlenecks or operational risk. I help design, operate, and improve a platform without adding unnecessary complexity, so developers can ship confidently and operators can understand what happens when something goes wrong.
 
 ## What I can help with
 
