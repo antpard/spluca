@@ -209,3 +209,16 @@ test("blog Open Graph metadata includes article section and tags", async () => {
   assert.match(blogLayout, /articleSection="Technical articles"/);
   assert.match(blogLayout, /articleTags=\{frontmatter\.tags\}/);
 });
+
+test("about page is discoverable and positioned for international clients", async () => {
+  const [page, variables] = await Promise.all([
+    readFile("src/pages/about.astro", "utf8"),
+    readFile("src/lib/variables.ts", "utf8"),
+  ]);
+
+  assert.match(variables, /about: "\/about"/);
+  assert.match(page, /title=\{`\$\{GLOBAL\.aboutTitle\}/);
+  assert.match(page, /international teams/);
+  assert.match(page, /href="\/services"/);
+  assert.match(page, /href="\/contact"/);
+});

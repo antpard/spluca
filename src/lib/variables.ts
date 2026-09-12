@@ -50,6 +50,11 @@ export const GLOBAL = {
   contactLongDescription:
     "Contact Antonio Pardo Sánchez for cloud architecture, backend development, Linux systems administration, Kubernetes platforms, and infrastructure consulting.",
 
+  // About metadata
+  aboutTitle: "About Antonio Pardo Sánchez",
+  aboutLongDescription:
+    "About Antonio Pardo Sánchez, a platform architect and systems engineer helping international teams build reliable cloud, backend, Linux, Kubernetes, and microVM systems.",
+
   // Experience metadata
   experienceTitle: "Experiences",
   experienceShortDescription: "A list of my experiences.",
@@ -61,6 +66,7 @@ export const GLOBAL = {
   // Menu items
   menu: {
     home: "/",
+    about: "/about",
     projects: "/projects",
     services: "/services",
     blog: "/blog",

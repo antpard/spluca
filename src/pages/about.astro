@@ -1,0 +1,50 @@
+---
+import { GLOBAL } from "../lib/variables";
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/common/Section.astro";
+import Seo from "../components/Seo.astro";
+import { breadcrumbSchema, personSchema } from "../lib/seo";
+---
+
+<Layout>
+  <Fragment slot="head">
+    <Seo
+      title={`${GLOBAL.aboutTitle} • ${GLOBAL.username}`}
+      description={GLOBAL.aboutLongDescription}
+      canonicalPath="/about"
+      ogType="profile"
+      jsonLd={[
+        personSchema(),
+        breadcrumbSchema([
+          { name: GLOBAL.username, path: "/" },
+          { name: "About", path: "/about" },
+        ]),
+      ]}
+    />
+  </Fragment>
+  <Section class="py-4 my-8">
+    <div class="flex items-center gap-4 pt-8 pb-16">
+      <h1 class="font-display text-3xl sm:text-4xl leading-loose">About Antonio Pardo Sánchez</h1>
+    </div>
+    <div class="flex flex-col gap-8">
+      <p class="zag-text zag-transition text-lg">
+        I am a platform architect and systems engineer with nearly 25 years of experience designing and operating cloud infrastructure, Linux platforms, backend services, and developer tools.
+      </p>
+      <p class="zag-text zag-transition">
+        I work with international teams remotely when a production system needs clearer architecture, stronger operational foundations, or focused implementation help. My work spans requirements, design, coding, testing, deployment, observability, and documentation.
+      </p>
+      <div class="flex flex-col gap-4">
+        <h2 class="font-display text-xl sm:text-2xl leading-loose">Areas of practice</h2>
+        <ul class="list-disc pl-6 flex flex-col gap-3">
+          <li>Cloud architecture, infrastructure automation, and production operations.</li>
+          <li>Rust, Go, and Ruby backend services, APIs, control planes, and systems software.</li>
+          <li>Linux administration, networking, security hardening, and reliability work.</li>
+          <li>Kubernetes platforms, containers, microVMs, and developer experience.</li>
+        </ul>
+      </div>
+      <p class="zag-text zag-transition">
+        Explore my <a class="text-red-400 hover:underline" href="/services">professional services</a> and <a class="text-red-400 hover:underline" href="/projects">projects and code</a>, or <a class="text-red-400 hover:underline" href="/contact">contact me to discuss your system</a>.
+      </p>
+    </div>
+  </Section>
+</Layout>
