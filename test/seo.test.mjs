@@ -54,3 +54,15 @@ test("services page contains international positioning and internal conversion l
   assert.match(page, /href="\/blog"/);
   assert.match(page, /href="\/contact"/);
 });
+
+test("services include focused pages for Kubernetes and systems backend work", async () => {
+  const servicePages = await Promise.all([
+    readFile("src/pages/services/kubernetes-platform-engineering.md", "utf8"),
+    readFile("src/pages/services/rust-go-backend-development.md", "utf8"),
+  ]);
+
+  assert.match(servicePages[0], /title: "Kubernetes Platform Engineering/);
+  assert.match(servicePages[0], /reliable Kubernetes platform/);
+  assert.match(servicePages[1], /title: "Rust & Go Backend Development/);
+  assert.match(servicePages[1], /Production backend services/);
+});
