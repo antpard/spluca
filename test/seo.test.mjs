@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readdir, readFile } from "node:fs/promises";
 
-import { absoluteUrl, itemListSchema, sameAsLinks } from "../src/lib/seo.ts";
+import { absoluteUrl, faqPageSchema, itemListSchema, sameAsLinks } from "../src/lib/seo.ts";
 
 test("itemListSchema exposes service names and canonical URLs", () => {
   assert.deepEqual(itemListSchema({
@@ -136,4 +136,76 @@ test("new SEO articles follow the blog's emoji heading style", async () => {
   assert.match(articles[0], /# 🧭 Designing a Reliable Kubernetes Platform for Small Teams/);
   assert.match(articles[1], /# 🦀 Rust vs Go for Infrastructure Backends/);
   assert.match(articles[2], /# 🧱 MicroVMs vs Containers for Multi-Tenant Workloads/);
+});
+
+test("home article section limits the list to five and links to the full blog", async () => {
+  const homeArticles = await readFile("src/components/home/FeaturedArticles.astro", "utf8");
+
+  assert.match(homeArticles, /featuredArticles\.slice\(0, 5\)/);
+  assert.match(homeArticles, /<Anchor url="\/blog"/);
+});
+
+test("home article data includes all blog posts before the display limit", async () => {
+  const featuredData = await readFile("src/lib/featured.ts", "utf8");
+  const articleBlock = featuredData.slice(featuredData.indexOf("export const featuredArticles"));
+
+  assert.doesNotMatch(articleBlock, /\.filter\(\(project\) => project\.featured\)/);
+  assert.match(articleBlock, /\.sort\(\(a, b\) =>/);
+});
+
+test("faqPageSchema exposes question and answer entities", () => {
+  assert.deepEqual(faqPageSchema([
+    { question: "Who is this service for?", answer: "International engineering teams." },
+  ]), {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [{
+      "@type": "Question",
+      name: "Who is this service for?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "International engineering teams.",
+      },
+    }],
+  });
+});
+
+test("services page contains useful questions and answers", async () => {
+  const page = await readFile("src/pages/services/index.astro", "utf8");
+
+  assert.match(page, /Frequently asked questions/);
+  assert.match(page, /Do you work with international teams\?/);
+  assert.match(page, /href="\/contact"/);
+});
+
+test("older articles have specific metadata and internal discovery links", async () => {
+  const [microvms, grpc, knative, axum] = await Promise.all([
+    readFile("src/pages/blog/micro-virtual-machines.md", "utf8"),
+    readFile("src/pages/blog/understanding-grpc-and-protocol-buffers.md", "utf8"),
+    readFile("src/pages/blog/knative-simplifying-serverless-development-on-kubernetes.md", "utf8"),
+    readFile("src/pages/blog/getting-started-with-axum-and-tokio.md", "utf8"),
+  ]);
+
+  assert.match(microvms, /title: "MicroVMs for Secure Multi-Tenant Edge Workloads"/);
+  assert.match(microvms, /\]\(\/projects\/mikrom\)/);
+  assert.match(grpc, /title: "gRPC and Protocol Buffers for Backend Services"/);
+  assert.match(grpc, /\]\(\/services\/backend-development\)/);
+  assert.match(knative, /title: "Knative for Serverless Workloads on Kubernetes"/);
+  assert.match(knative, /\]\(\/services\/kubernetes-platform-engineering\)/);
+  assert.match(axum, /title: "Building a REST API with Axum and Tokio"/);
+  assert.match(axum, /\]\(\/services\/backend-development\)/);
+});
+
+test("blog Open Graph metadata includes article section and tags", async () => {
+  const [seo, blogLayout] = await Promise.all([
+    readFile("src/components/Seo.astro", "utf8"),
+    readFile("src/layouts/BlogLayout.astro", "utf8"),
+  ]);
+
+  assert.match(seo, /articleSection\?: string/);
+  assert.match(seo, /articleTags\?: string\[\]/);
+  assert.match(seo, /property="article:section"/);
+  assert.match(seo, /property="article:tag"/);
+  assert.match(blogLayout, /articleSection="Technical articles"/);
+  assert.match(blogLayout, /articleTags=\{frontmatter\.tags\}/);
 });

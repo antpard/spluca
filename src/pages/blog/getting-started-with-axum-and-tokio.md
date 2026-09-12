@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/BlogLayout.astro
-title: Getting Started with Axum and Tokio
-description: In this tutorial, we'll build a simple REST API together using two powerful tools, Tokio and Axum. 
+title: "Building a REST API with Axum and Tokio"
+description: "A practical beginner's tutorial for building an asynchronous Rust REST API with Axum and Tokio, including routing, state, handlers, and testing."
 tags: ["rust", "tokio", "axum", "async", "programming", "api"]
 time: 12 
 featured: true
@@ -270,3 +270,5 @@ To take your API further, consider:
 The [Axum documentation](https://docs.rs/axum) and [Tokio documentation](https://docs.rs/tokio) are excellent resources for diving deeper. The Axum GitHub repository also has many example projects to learn from.
 
 Happy coding!
+
+When a prototype needs to become a production service, my [backend development service](/services/backend-development) covers Rust APIs, systems software, testing, and observability.

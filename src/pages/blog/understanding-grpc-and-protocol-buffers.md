@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/BlogLayout.astro
-title: Understanding gRPC and Protocol Buffers
-description: Understanding gRPC and Protocol Buffers, a complete beginner's guide 
+title: "gRPC and Protocol Buffers for Backend Services"
+description: "A practical guide to designing typed gRPC services with Protocol Buffers, including contracts, streaming, compatibility, and when to choose gRPC over REST."
 tags: ["grpc", "google", "json", "api", "rest"]
 time: 20
 featured: true
@@ -770,3 +770,5 @@ Whether you're building microservices, mobile backends, or real-time application
 - [gRPC Blog](https://grpc.io/blog/)
 
 Happy coding! 🚀
+
+For production API work, see my [backend development service](/services/backend-development) and the [Mikrom project](/projects/mikrom), which uses typed service boundaries across its platform components.

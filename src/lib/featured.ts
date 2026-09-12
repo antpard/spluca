@@ -99,7 +99,6 @@ export const featuredArticles = (
       },
     )
   )
-    .filter((project) => project.featured)
     .sort((a, b) => {
       const dateA = new Date(a.timestamp);
       const dateB = new Date(b.timestamp);

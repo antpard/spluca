@@ -18,7 +18,7 @@ const { featuredArticles } = Astro.props;
 <ul class="my-8">
   {
     (featuredArticles.length === 0 && <p>{GLOBAL.noArticles}</p>) ||
-      featuredArticles.map((article) => (
+      featuredArticles.slice(0, 5).map((article) => (
         <li>
           <ArticleSnippet
             title={article.title}

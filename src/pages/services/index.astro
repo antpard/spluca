@@ -5,7 +5,7 @@ import ServiceSnippet from "../../components/ServiceSnippet.astro";
 import Layout from "../../layouts/Layout.astro";
 import { GLOBAL } from "../../lib/variables";
 import Seo from "../../components/Seo.astro";
-import { breadcrumbSchema, collectionPageSchema, itemListSchema } from "../../lib/seo";
+import { breadcrumbSchema, collectionPageSchema, faqPageSchema, itemListSchema } from "../../lib/seo";
 ---
 
 <Layout>
@@ -24,6 +24,20 @@ import { breadcrumbSchema, collectionPageSchema, itemListSchema } from "../../li
           path: "/services",
           items: services.map(({ title, filename }) => ({ title, filename: filename.replace("/services/", "") })),
         }),
+        faqPageSchema([
+          {
+            question: "Do you work with international teams?",
+            answer: "Yes. I work remotely with international teams on cloud infrastructure, backend systems, Linux, Kubernetes, and platform engineering projects.",
+          },
+          {
+            question: "Can you work with an existing production platform?",
+            answer: "Yes. I can assess an existing platform, identify operational risks, and implement focused improvements without requiring a full rewrite.",
+          },
+          {
+            question: "How do we start a project?",
+            answer: "Start by sharing your goals, constraints, and current challenges through the contact page. We can then define a focused discovery or implementation engagement.",
+          },
+        ]),
         breadcrumbSchema([
           { name: GLOBAL.username, path: "/" },
           { name: GLOBAL.servicesName, path: "/services" },
@@ -57,6 +71,23 @@ import { breadcrumbSchema, collectionPageSchema, itemListSchema } from "../../li
         <a class="text-red-400 hover:underline" href="/blog">read technical articles</a>
         <span> to see how I approach complex systems.</span>
       </p>
+    </div>
+    <div class="flex flex-col gap-6 mb-16">
+      <h2 class="font-display text-xl sm:text-2xl leading-loose">Frequently asked questions</h2>
+      <dl class="flex flex-col gap-6">
+        <div>
+          <dt class="font-semibold">Do you work with international teams?</dt>
+          <dd class="mt-2">Yes. I work remotely with international teams on cloud infrastructure, backend systems, Linux, Kubernetes, and platform engineering projects.</dd>
+        </div>
+        <div>
+          <dt class="font-semibold">Can you work with an existing production platform?</dt>
+          <dd class="mt-2">Yes. I can assess an existing platform, identify operational risks, and implement focused improvements without requiring a full rewrite.</dd>
+        </div>
+        <div>
+          <dt class="font-semibold">How do we start a project?</dt>
+          <dd class="mt-2">Start by sharing your goals, constraints, and current challenges through the <a class="text-red-400 hover:underline" href="/contact">contact page</a>.</dd>
+        </div>
+      </dl>
     </div>
     <ul>
       {

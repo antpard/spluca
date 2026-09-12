@@ -63,3 +63,5 @@ Useful commands:
 | `pnpm preview` | Build and run the site locally with Wrangler |
 | `pnpm deploy` | Build and deploy the site to Cloudflare Workers |
 | `pnpm astro ...` | Run an Astro CLI command |
+
+SEO measurement and indexing setup is documented in [`docs/seo-monitoring.md`](docs/seo-monitoring.md).

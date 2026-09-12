@@ -25,6 +25,8 @@ const sourceUrl = generateSourceUrl(frontmatter.filename, "blog");
       canonicalPath={`/blog/${frontmatter.filename}`}
       ogType="article"
       publishedTime={frontmatter.timestamp}
+      articleSection="Technical articles"
+      articleTags={frontmatter.tags}
       jsonLd={[
         blogPostingSchema(frontmatter),
         breadcrumbSchema([
