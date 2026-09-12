@@ -1,0 +1,27 @@
+---
+import Anchor from "./common/Anchor.astro";
+import { articleNavigation } from "../lib/article-navigation";
+
+const { currentSlug, currentTags = [] } = Astro.props;
+const currentIndex = articleNavigation.findIndex((article) => article.slug === currentSlug);
+const previousArticle = currentIndex >= 0 ? articleNavigation[currentIndex + 1] : undefined;
+const nextArticle = currentIndex > 0 ? articleNavigation[currentIndex - 1] : undefined;
+const relatedArticles = articleNavigation
+  .filter((article) => article.slug !== currentSlug && article.tags.some((tag) => currentTags.includes(tag)))
+  .slice(0, 3);
+---
+
+{relatedArticles.length > 0 && (
+  <section class="mt-16">
+    <h2 class="font-mono text-xl sm:text-2xl leading-loose">Related articles</h2>
+    <ul class="mt-6 flex flex-col gap-3">
+      {relatedArticles.map((article) => (
+        <li><Anchor url={`/blog/${article.slug}`}>{article.title}</Anchor></li>
+      ))}
+    </ul>
+  </section>
+)}
+<div class="flex flex-wrap gap-4">
+  {previousArticle && <Anchor url={`/blog/${previousArticle.slug}`}>Previous article</Anchor>}
+  {nextArticle && <Anchor url={`/blog/${nextArticle.slug}`}>Next article</Anchor>}
+</div>

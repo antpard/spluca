@@ -9,6 +9,7 @@ import type { MarkdownLayoutProps } from "astro";
 import Prose from "../components/Prose.astro";
 import TagLink from "../components/TagLink.astro";
 import Anchor from "../components/common/Anchor.astro";
+import ArticleDiscovery from "../components/ArticleDiscovery.astro";
 import Layout from "./Layout.astro";
 
 type Props = MarkdownLayoutProps<ArticleFrontmatter>;
@@ -58,6 +59,10 @@ const sourceUrl = generateSourceUrl(frontmatter.filename, "blog");
     <Prose>
       <slot />
     </Prose>
+    <ArticleDiscovery
+      currentSlug={frontmatter.filename}
+      currentTags={frontmatter.tags}
+    />
     <div class="flex flex-col gap-4 pt-8">
       <p>~{GLOBAL.username}</p>
       <div class="flex flex-wrap gap-4">

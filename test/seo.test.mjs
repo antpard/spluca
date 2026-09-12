@@ -130,11 +130,15 @@ test("footer uses a stable professional signoff", async () => {
   assert.doesNotMatch(footer, /getElementById\("quote"\)/);
 });
 
-test("article details avoid importing the global content list", async () => {
+test("article details expose safe related reading and sequence navigation", async () => {
   const layout = await readFile("src/layouts/BlogLayout.astro", "utf8");
+  const discovery = await readFile("src/components/ArticleDiscovery.astro", "utf8");
 
   assert.doesNotMatch(layout, /from ["']\.\.\/lib\/list["']/);
-  assert.doesNotMatch(layout, /relatedArticles|previousArticle|nextArticle/);
+  assert.match(layout, /ArticleDiscovery/);
+  assert.match(discovery, /relatedArticles/);
+  assert.match(discovery, /Previous article/);
+  assert.match(discovery, /Next article/);
 });
 
 test("about page explains the working relationship and next step", async () => {
