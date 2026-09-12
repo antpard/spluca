@@ -5,7 +5,7 @@ import profileImage from "../../assets/apardo.png";
 import Anchor from "../common/Anchor.astro";
 ---
 
-<div class="flex flex-col items-center sm:flex-row gap-8 sm:gap-12">
+<div class="flex flex-col items-center sm:items-start sm:flex-row gap-8 sm:gap-12">
   <Image
     src={profileImage}
     alt={GLOBAL.username}
@@ -15,7 +15,7 @@ import Anchor from "../common/Anchor.astro";
     format="webp"
     loading="eager"
     fetchpriority="high"
-    class="rounded-full max-w-40 w-40 h-40 mb-4 z-0"
+    class="rounded-full max-w-40 w-40 h-40 z-0"
   />
   <div class="flex flex-col items-center sm:items-start gap-5">
     <p class="zag-muted zag-transition text-sm font-semibold uppercase tracking-wide">

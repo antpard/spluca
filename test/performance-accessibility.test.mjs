@@ -57,3 +57,34 @@ test("primary navigation exposes accessible menu state and active routes", async
   assert.match(header, /url="\/"/);
   assert.match(header, /filter\(\(\[label\]\) => label !== "home" && label !== "contact"\)/);
 });
+
+test("all headings use the hero's readable font", async () => {
+  const files = [
+    "src/pages/404.astro",
+    "src/pages/about.astro",
+    "src/pages/contact.astro",
+    "src/pages/index.astro",
+    "src/pages/projects/index.astro",
+    "src/pages/services/index.astro",
+    "src/pages/blog/index.astro",
+    "src/pages/tags/[tag].astro",
+    "src/layouts/BlogLayout.astro",
+    "src/layouts/ProjectLayout.astro",
+    "src/layouts/ServiceLayout.astro",
+    "src/components/TagResults.astro",
+    "src/components/home/FeaturedArticles.astro",
+    "src/components/home/FeaturedProjects.astro",
+    "src/components/home/FeaturedServices.astro",
+    "src/components/home/FeaturedExperiences.astro",
+  ];
+  const sources = await Promise.all(files.map((file) => readFile(file, "utf8")));
+
+  sources.forEach((source) => assert.doesNotMatch(source, /<h[1-6][^>]*font-display/));
+});
+
+test("home hero aligns the avatar to the top of the text block on desktop", async () => {
+  const hero = await readFile("src/components/home/Hero.astro", "utf8");
+
+  assert.match(hero, /items-center sm:items-start sm:flex-row/);
+  assert.doesNotMatch(hero, /class="rounded-full[^\"]*mb-4/);
+});

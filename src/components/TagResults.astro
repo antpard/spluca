@@ -15,7 +15,7 @@ const { title, id, kind, items } = Astro.props;
 ---
 
 <section id={id} class="pt-8 scroll-mt-8">
-  <h2 class="font-display text-xl sm:text-2xl leading-loose mb-8">{title}</h2>
+  <h2 class="font-mono text-xl sm:text-2xl leading-loose mb-8">{title}</h2>
   <ul>
     {items.map((item) => (
       <li>
