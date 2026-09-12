@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readdir, readFile } from "node:fs/promises";
 
 import { absoluteUrl, itemListSchema, sameAsLinks } from "../src/lib/seo.ts";
 
@@ -69,16 +69,17 @@ test("services page contains international positioning and internal conversion l
   assert.match(page, /href="\/contact"/);
 });
 
-test("services include focused pages for Kubernetes and systems backend work", async () => {
-  const servicePages = await Promise.all([
+test("services include focused Kubernetes work without duplicate backend pages", async () => {
+  const [kubernetesPage, backendPage, serviceFiles] = await Promise.all([
     readFile("src/pages/services/kubernetes-platform-engineering.md", "utf8"),
-    readFile("src/pages/services/rust-go-backend-development.md", "utf8"),
+    readFile("src/pages/services/backend-development.md", "utf8"),
+    readdir("src/pages/services"),
   ]);
 
-  assert.match(servicePages[0], /title: "Kubernetes Platform Engineering/);
-  assert.match(servicePages[0], /reliable Kubernetes platform/);
-  assert.match(servicePages[1], /title: "Rust & Go Backend Development/);
-  assert.match(servicePages[1], /Production backend services/);
+  assert.match(kubernetesPage, /title: "Kubernetes Platform Engineering/);
+  assert.match(kubernetesPage, /reliable Kubernetes platform/);
+  assert.match(backendPage, /title: "Backend Development — Ruby, Go & Rust/);
+  assert.equal(serviceFiles.filter((file) => file.includes("backend-development")).length, 1);
 });
 
 test("project pages expose evidence-based case studies with service links", async () => {
@@ -90,7 +91,7 @@ test("project pages expose evidence-based case studies with service links", asyn
   assert.match(mikrom, /## Case study: building an isolated edge platform/);
   assert.match(mikrom, /\]\(\/services\/kubernetes-platform-engineering\)/);
   assert.match(scratch, /## Case study: operating reliable data extraction/);
-  assert.match(scratch, /\]\(\/services\/rust-go-backend-development\)/);
+  assert.match(scratch, /\]\(\/services\/backend-development\)/);
 });
 
 test("service layout provides a descriptive contact conversion link", async () => {

@@ -75,7 +75,7 @@ Scraping workflows need to handle different page types, browser behavior, schedu
 
 Scratch separates durable orchestration from the expensive scraping runtime. The Rust/Axum API validates and records work, NATS JetStream delivers jobs to the scraper worker, and the worker handles direct HTTP, Chromium rendering, browser actions, bounded crawling, and structured extraction. Quality gates, retries, limits, and visible execution states keep unsuccessful or incomplete runs from disappearing.
 
-This connects naturally with [Rust and Go backend development](/services/rust-go-backend-development) and [cloud architecture and infrastructure](/services/cloud-architecture): the platform uses explicit service boundaries and operational controls for a failure-prone workload.
+This connects naturally with [backend development in Ruby, Go, and Rust](/services/backend-development) and [cloud architecture and infrastructure](/services/cloud-architecture): the platform uses explicit service boundaries and operational controls for a failure-prone workload.
 
 ### What the project demonstrates
 
