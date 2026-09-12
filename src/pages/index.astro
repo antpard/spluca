@@ -7,6 +7,7 @@ import Section from "../components/common/Section.astro";
 import FeaturedProjects from "../components/home/FeaturedProjects.astro";
 import FeaturedServices from "../components/home/FeaturedServices.astro";
 import FeaturedArticles from "../components/home/FeaturedArticles.astro";
+import Anchor from "../components/common/Anchor.astro";
 import Seo from "../components/Seo.astro";
 import { personSchema, websiteSchema } from "../lib/seo";
 ---
@@ -25,12 +26,19 @@ import { personSchema, websiteSchema } from "../lib/seo";
     <Hero />
   </Section>
   <Section>
-    <FeaturedProjects featuredProjects={featuredProjects} />
-  </Section>
-  <Section>
     <FeaturedServices featuredServices={featuredServices} />
   </Section>
   <Section>
+    <FeaturedProjects featuredProjects={featuredProjects} />
+  </Section>
+  <Section>
     <FeaturedArticles featuredArticles={featuredArticles} />
+  </Section>
+  <Section class="my-16">
+    <div class="zag-border-b zag-transition border-t py-8 flex flex-col gap-4">
+      <h2 class="font-display text-xl sm:text-2xl leading-loose">Have a difficult system to solve?</h2>
+      <p>Share the constraints and context. We can identify the highest-value next step together.</p>
+      <Anchor url="/contact" class="zag-cta-primary w-fit">Discuss your system</Anchor>
+    </div>
   </Section>
 </Layout>

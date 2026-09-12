@@ -47,3 +47,12 @@ test("personal hub conversion copy is centralized", async () => {
   assert.match(variables, /heroPrimaryCta:/);
   assert.match(variables, /heroSecondaryCta:/);
 });
+
+test("primary navigation exposes accessible menu state and active routes", async () => {
+  const header = await readFile("src/components/Header.astro", "utf8");
+
+  assert.match(header, /aria-expanded="false"/);
+  assert.match(header, /aria-controls="primary-navigation"/);
+  assert.match(header, /aria-current=\{isActive \? "page"/);
+  assert.match(header, /url="\/"/);
+});

@@ -153,6 +153,18 @@ test("home article data includes all blog posts before the display limit", async
   assert.match(articleBlock, /\.sort\(\(a, b\) =>/);
 });
 
+test("home exposes both conversion and proof paths", async () => {
+  const [home, hero] = await Promise.all([
+    readFile("src/pages/index.astro", "utf8"),
+    readFile("src/components/home/Hero.astro", "utf8"),
+  ]);
+
+  assert.match(home, /url="\/contact"/);
+  assert.match(hero, /GLOBAL\.heroEyebrow/);
+  assert.match(hero, /GLOBAL\.heroProof/);
+  assert.match(hero, /url="\/projects"/);
+});
+
 test("faqPageSchema exposes question and answer entities", () => {
   assert.deepEqual(faqPageSchema([
     { question: "Who is this service for?", answer: "International engineering teams." },
