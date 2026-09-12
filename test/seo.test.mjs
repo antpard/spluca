@@ -111,6 +111,42 @@ test("project case studies provide a descriptive contact link", async () => {
   assert.match(scratch, /\]\(\/contact\)/);
 });
 
+test("project detail layout presents a case study at a glance", async () => {
+  const layout = await readFile("src/layouts/ProjectLayout.astro", "utf8");
+
+  assert.match(layout, /At a glance/);
+  assert.match(layout, /frontmatter\.description/);
+  assert.match(layout, /Project focus/);
+  assert.match(layout, /View repository/);
+  assert.match(layout, /Open live product/);
+});
+
+test("footer uses a stable professional signoff", async () => {
+  const footer = await readFile("src/components/Footer.astro", "utf8");
+
+  assert.match(footer, /Building reliable systems/);
+  assert.match(footer, /All rights reserved/);
+  assert.doesNotMatch(footer, /const quotes =/);
+  assert.doesNotMatch(footer, /getElementById\("quote"\)/);
+});
+
+test("article details expose related reading and sequence navigation", async () => {
+  const layout = await readFile("src/layouts/BlogLayout.astro", "utf8");
+
+  assert.match(layout, /relatedArticles/);
+  assert.match(layout, /Related articles/);
+  assert.match(layout, /previousArticle/);
+  assert.match(layout, /nextArticle/);
+});
+
+test("about page explains the working relationship and next step", async () => {
+  const page = await readFile("src/pages/about.astro", "utf8");
+
+  assert.match(page, /How I work/);
+  assert.match(page, /What teams can expect/);
+  assert.match(page, /href="\/contact"/);
+});
+
 test("SEO articles target focused infrastructure questions and link to relevant services", async () => {
   const articles = await Promise.all([
     readFile("src/pages/blog/designing-a-reliable-kubernetes-platform.md", "utf8"),

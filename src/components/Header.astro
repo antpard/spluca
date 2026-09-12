@@ -102,6 +102,13 @@ const navigationEntries = Object.entries(GLOBAL.menu).filter(([label]) => label 
     isOpen = false;
     updateNavState();
   }));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && isOpen) {
+      isOpen = false;
+      updateNavState();
+      button?.focus();
+    }
+  });
   window.addEventListener("resize", updateNavState);
   updateNavState();
 

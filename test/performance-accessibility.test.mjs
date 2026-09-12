@@ -88,3 +88,11 @@ test("home hero aligns the avatar to the top of the text block on desktop", asyn
   assert.match(hero, /items-center sm:items-start sm:flex-row/);
   assert.doesNotMatch(hero, /class="rounded-full[^\"]*mb-4/);
 });
+
+test("mobile navigation can close with Escape and return focus", async () => {
+  const header = await readFile("src/components/Header.astro", "utf8");
+
+  assert.match(header, /keydown/);
+  assert.match(header, /event\.key === "Escape"/);
+  assert.match(header, /button\?\.focus\(\)/);
+});

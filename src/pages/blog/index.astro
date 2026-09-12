@@ -46,7 +46,7 @@ import { breadcrumbSchema, collectionPageSchema, itemListSchema } from "../../li
     </div>
     <ul>
       {
-        articles.map((project) => (
+        articles.map((project, index) => (
           <li>
             <ArticleSnippet
               title={project.title}
@@ -55,6 +55,7 @@ import { breadcrumbSchema, collectionPageSchema, itemListSchema } from "../../li
               url={project.filename}
               timestamp={project.timestamp}
               tags={project.tags}
+              featured={index === 0}
             />
           </li>
         ))
