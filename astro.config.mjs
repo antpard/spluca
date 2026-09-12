@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from "@tailwindcss/vite";
@@ -11,12 +12,12 @@ export default defineConfig({
   site: 'https://spluca.org',
   integrations: [mdx(), sitemap()],
   markdown: {
-    rehypePlugins: [
-      [
+    processor: unified({
+      rehypePlugins: [[
         rehypeExternalLinks,
         { target: '_blank', rel: ['noopener', 'noreferrer'] },
-      ],
-    ],
+      ]],
+    }),
     shikiConfig: {
       themes: {
         light: 'github-light',
