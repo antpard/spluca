@@ -80,3 +80,5 @@ This connects naturally with [Rust and Go backend development](/services/rust-go
 ### What the project demonstrates
 
 The repository covers a complete path from scraper definition through validated rows and exports, with REST, SDK, dashboard, and MCP access. It also documents opt-in proxying, SSRF protection, observability, billing, and selector-repair workflows without making unsupported customer or traffic claims.
+
+If you need help designing a dependable data platform, [contact me to discuss your backend or infrastructure needs](/contact).

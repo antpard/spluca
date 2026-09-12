@@ -92,3 +92,20 @@ test("project pages expose evidence-based case studies with service links", asyn
   assert.match(scratch, /## Case study: operating reliable data extraction/);
   assert.match(scratch, /\]\(\/services\/rust-go-backend-development\)/);
 });
+
+test("service layout provides a descriptive contact conversion link", async () => {
+  const layout = await readFile("src/layouts/ServiceLayout.astro", "utf8");
+
+  assert.match(layout, /href="\/contact"/);
+  assert.match(layout, /discuss your infrastructure needs/);
+});
+
+test("project case studies provide a descriptive contact link", async () => {
+  const [mikrom, scratch] = await Promise.all([
+    readFile("src/pages/projects/mikrom.md", "utf8"),
+    readFile("src/pages/projects/scratch.md", "utf8"),
+  ]);
+
+  assert.match(mikrom, /\]\(\/contact\)/);
+  assert.match(scratch, /\]\(\/contact\)/);
+});

@@ -84,3 +84,5 @@ This is the kind of work covered by [Kubernetes platform engineering](/services/
 ### What the project demonstrates
 
 The repository makes the full path visible—from Git commit and image build to isolated execution, routed traffic, logs, metrics, snapshots, and rollback-related operations. It is an ongoing open-source platform project, so this case study describes the engineering scope and architecture rather than claiming a customer result.
+
+If your team is solving a similar infrastructure problem, [contact me to discuss your platform needs](/contact).
