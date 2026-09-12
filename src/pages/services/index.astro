@@ -5,7 +5,7 @@ import ServiceSnippet from "../../components/ServiceSnippet.astro";
 import Layout from "../../layouts/Layout.astro";
 import { GLOBAL } from "../../lib/variables";
 import Seo from "../../components/Seo.astro";
-import { breadcrumbSchema, collectionPageSchema } from "../../lib/seo";
+import { breadcrumbSchema, collectionPageSchema, itemListSchema } from "../../lib/seo";
 ---
 
 <Layout>
@@ -20,6 +20,10 @@ import { breadcrumbSchema, collectionPageSchema } from "../../lib/seo";
           description: GLOBAL.serviceLongDescription,
           path: "/services",
         }),
+        itemListSchema({
+          path: "/services",
+          items: services.map(({ title, filename }) => ({ title, filename: filename.replace("/services/", "") })),
+        }),
         breadcrumbSchema([
           { name: GLOBAL.username, path: "/" },
           { name: GLOBAL.servicesName, path: "/services" },
@@ -29,7 +33,30 @@ import { breadcrumbSchema, collectionPageSchema } from "../../lib/seo";
   </Fragment>
   <Section class="py-4 my-8">
     <div class="flex items-center gap-4 pt-8 pb-16">
-      <h1 class="font-display text-3xl sm:text-4xl leading-loose">{GLOBAL.servicesName}</h1>
+      <h1 class="font-display text-3xl sm:text-4xl leading-loose">Cloud, Backend &amp; Linux Engineering Services</h1>
+    </div>
+    <div class="flex flex-col gap-6 mb-16">
+      <p class="zag-text zag-transition text-lg">
+        I help international teams design, build, and operate reliable software infrastructure remotely — from cloud architecture and Kubernetes platforms to backend systems and hardened Linux servers.
+      </p>
+      <p class="zag-text zag-transition">
+        Explore the services below, or <a class="text-emerald-400 hover:underline" href="/contact">contact me to discuss your project</a>.
+      </p>
+    </div>
+    <div class="flex flex-col gap-6 mb-16">
+      <h2 class="font-display text-xl sm:text-2xl leading-loose">Why work with me</h2>
+      <ul class="list-disc pl-6 flex flex-col gap-3">
+        <li>Nearly 25 years of experience across cloud infrastructure, Linux systems, backend engineering, and platform architecture.</li>
+        <li>End-to-end support from requirements and architecture through implementation, testing, observability, and handoff.</li>
+        <li>Practical experience with Kubernetes, Rust, Go, Ruby, Terraform, Docker, and microVM-based systems.</li>
+        <li>Remote collaboration for international teams that need reliable, secure, and maintainable production systems.</li>
+      </ul>
+      <p class="zag-text zag-transition">
+        <a class="text-emerald-400 hover:underline" href="/projects">Explore projects and code</a>
+        <span> or </span>
+        <a class="text-emerald-400 hover:underline" href="/blog">read technical articles</a>
+        <span> to see how I approach complex systems.</span>
+      </p>
     </div>
     <ul>
       {

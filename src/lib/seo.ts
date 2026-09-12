@@ -130,6 +130,21 @@ export const collectionPageSchema = (page: {
   isPartOf: { "@id": `${siteRoot}/#website` },
 });
 
+export const itemListSchema = (list: {
+  path: string;
+  items: Array<{ title: string; filename: string }>;
+}): JsonLd => ({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: GLOBAL.serviceTitle,
+  itemListElement: list.items.map((item, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: item.title,
+    url: absoluteUrl(`${list.path}/${item.filename}`),
+  })),
+});
+
 export const contactPageSchema = (): JsonLd => ({
   "@context": "https://schema.org",
   "@type": "ContactPage",

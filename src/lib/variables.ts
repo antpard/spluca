@@ -39,10 +39,10 @@ export const GLOBAL = {
     "Open source and product engineering projects by Antonio Pardo Sánchez, including cloud platforms, backend services, infrastructure tooling, and microVM systems.",
 
   // Service metadata
-  serviceTitle: "Services",
+  serviceTitle: "Cloud Architecture, Backend & Linux Services",
   serviceShortDescription: "A list of my services.",
   serviceLongDescription:
-    "Professional services for cloud architecture, backend development, Linux systems administration, Kubernetes platforms, infrastructure automation, and production operations.",
+    "Remote cloud architecture, backend development, Linux administration, Kubernetes, and infrastructure consulting for international teams.",
 
   // Contact metadata
   contactTitle: "Contact",

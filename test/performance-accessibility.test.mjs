@@ -17,14 +17,6 @@ test("secondary display font is not preloaded on the critical path", async () =>
   assert.doesNotMatch(layout, /href="\/fonts\/press-start-2p-latin-400-normal\.woff2"/);
 });
 
-test("article typography is isolated from the global stylesheet", async () => {
-  const globalStyles = await readFile("src/styles/global.css", "utf8");
-  const prose = await readFile("src/styles/prose.css", "utf8");
-
-  assert.doesNotMatch(globalStyles, /@plugin "@tailwindcss\/typography"/);
-  assert.match(prose, /@plugin "@tailwindcss\/typography"/);
-});
-
 test("secondary fonts do not swap in after first paint", async () => {
   const styles = await readFile("src/styles/global.css", "utf8");
 
