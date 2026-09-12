@@ -21,6 +21,10 @@ export type TagEntry = {
   items: TagIndexInput;
 };
 
+export function displayTagLabel(tag: string): string {
+  return tag.trim().toLowerCase() === "go" ? "Go programming language" : tag.trim();
+}
+
 export function slugifyTag(tag: string): string {
   return tag
     .trim()

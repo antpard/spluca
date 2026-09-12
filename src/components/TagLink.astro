@@ -1,6 +1,6 @@
 ---
 import Anchor from "./common/Anchor.astro";
-import { slugifyTag } from "../lib/tags";
+import { displayTagLabel, slugifyTag } from "../lib/tags";
 
 export type Props = {
   tag: string;
@@ -8,11 +8,12 @@ export type Props = {
 
 const { tag } = Astro.props;
 const label = tag.trim();
+const displayLabel = displayTagLabel(label);
 const slug = slugifyTag(label);
 ---
 
 {slug ? (
   <Anchor url={`/tags/${slug}`} class="inline-block -zag-text -zag-bg zag-transition px-2 py-1 text-sm font-semibold">
-    {label}
+    {displayLabel}
   </Anchor>
 ) : null}

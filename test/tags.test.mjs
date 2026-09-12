@@ -2,7 +2,12 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
-import { createTagIndex, slugifyTag } from "../src/lib/tags.ts";
+import { createTagIndex, displayTagLabel, slugifyTag } from "../src/lib/tags.ts";
+
+test("disambiguates the Go tag for link text", () => {
+  assert.equal(displayTagLabel("go"), "Go programming language");
+  assert.equal(displayTagLabel("rust"), "rust");
+});
 
 test("slugifyTag normalizes whitespace, case, and separators", () => {
   assert.equal(slugifyTag("  Cloud Architecture  "), "cloud-architecture");
