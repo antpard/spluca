@@ -187,6 +187,31 @@ test("home previews preserve useful metadata and descriptive project actions", a
   assert.match(projects, /Open live product/);
 });
 
+test("content indexes expose their primary decision paths", async () => {
+  const [services, projects, blog] = await Promise.all([
+    readFile("src/pages/services/index.astro", "utf8"),
+    readFile("src/pages/projects/index.astro", "utf8"),
+    readFile("src/pages/blog/index.astro", "utf8"),
+  ]);
+
+  assert.match(services, /How I work/);
+  assert.match(services, /Start a conversation/);
+  assert.match(projects, /Selected projects/);
+  assert.match(blog, /Featured article/);
+});
+
+test("detail layouts offer a meaningful next step", async () => {
+  const [service, project, article] = await Promise.all([
+    readFile("src/layouts/ServiceLayout.astro", "utf8"),
+    readFile("src/layouts/ProjectLayout.astro", "utf8"),
+    readFile("src/layouts/BlogLayout.astro", "utf8"),
+  ]);
+
+  assert.match(service, /href="\/contact"/);
+  assert.match(project, /href="\/contact"/);
+  assert.match(article, /url="\/blog"/);
+});
+
 test("faqPageSchema exposes question and answer entities", () => {
   assert.deepEqual(faqPageSchema([
     { question: "Who is this service for?", answer: "International engineering teams." },
