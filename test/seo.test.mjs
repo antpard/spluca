@@ -110,3 +110,30 @@ test("project case studies provide a descriptive contact link", async () => {
   assert.match(mikrom, /\]\(\/contact\)/);
   assert.match(scratch, /\]\(\/contact\)/);
 });
+
+test("SEO articles target focused infrastructure questions and link to relevant services", async () => {
+  const articles = await Promise.all([
+    readFile("src/pages/blog/designing-a-reliable-kubernetes-platform.md", "utf8"),
+    readFile("src/pages/blog/rust-vs-go-for-infrastructure-backends.md", "utf8"),
+    readFile("src/pages/blog/microvms-vs-containers-for-multitenant-workloads.md", "utf8"),
+  ]);
+
+  assert.match(articles[0], /title: "Designing a Reliable Kubernetes Platform for Small Teams"/);
+  assert.match(articles[0], /\]\(\/services\/kubernetes-platform-engineering\)/);
+  assert.match(articles[1], /title: "Rust vs Go for Infrastructure Backends"/);
+  assert.match(articles[1], /\]\(\/services\/backend-development\)/);
+  assert.match(articles[2], /title: "MicroVMs vs Containers for Multi-Tenant Workloads"/);
+  assert.match(articles[2], /\]\(\/services\/cloud-architecture\)/);
+});
+
+test("new SEO articles follow the blog's emoji heading style", async () => {
+  const articles = await Promise.all([
+    readFile("src/pages/blog/designing-a-reliable-kubernetes-platform.md", "utf8"),
+    readFile("src/pages/blog/rust-vs-go-for-infrastructure-backends.md", "utf8"),
+    readFile("src/pages/blog/microvms-vs-containers-for-multitenant-workloads.md", "utf8"),
+  ]);
+
+  assert.match(articles[0], /# 🧭 Designing a Reliable Kubernetes Platform for Small Teams/);
+  assert.match(articles[1], /# 🦀 Rust vs Go for Infrastructure Backends/);
+  assert.match(articles[2], /# 🧱 MicroVMs vs Containers for Multi-Tenant Workloads/);
+});
