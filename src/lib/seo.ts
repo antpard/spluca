@@ -131,12 +131,13 @@ export const collectionPageSchema = (page: {
 });
 
 export const itemListSchema = (list: {
+  name?: string;
   path: string;
   items: Array<{ title: string; filename: string }>;
 }): JsonLd => ({
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: GLOBAL.serviceTitle,
+  name: list.name ?? GLOBAL.serviceTitle,
   itemListElement: list.items.map((item, index) => ({
     "@type": "ListItem",
     position: index + 1,

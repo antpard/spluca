@@ -5,7 +5,7 @@ import ProjectSnippet from "../../components/ProjectSnippet.astro";
 import Layout from "../../layouts/Layout.astro";
 import { GLOBAL } from "../../lib/variables";
 import Seo from "../../components/Seo.astro";
-import { breadcrumbSchema, collectionPageSchema } from "../../lib/seo";
+import { breadcrumbSchema, collectionPageSchema, itemListSchema } from "../../lib/seo";
 ---
 
 <Layout>
@@ -19,6 +19,14 @@ import { breadcrumbSchema, collectionPageSchema } from "../../lib/seo";
           name: GLOBAL.projectTitle,
           description: GLOBAL.projectLongDescription,
           path: "/projects",
+        }),
+        itemListSchema({
+          name: GLOBAL.projectTitle,
+          path: "/projects",
+          items: projects.map(({ title, filename }) => ({
+            title,
+            filename: filename.replace("/projects/", ""),
+          })),
         }),
         breadcrumbSchema([
           { name: GLOBAL.username, path: "/" },

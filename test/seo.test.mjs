@@ -32,6 +32,20 @@ test("itemListSchema exposes service names and canonical URLs", () => {
   });
 });
 
+test("itemListSchema supports project and article collection names", () => {
+  assert.equal(itemListSchema({
+    name: "Projects and Code",
+    path: "/projects",
+    items: [{ title: "Mikrom", filename: "mikrom" }],
+  }).name, "Projects and Code");
+
+  assert.equal(itemListSchema({
+    name: "Technical Articles",
+    path: "/blog",
+    items: [{ title: "MicroVMs", filename: "micro-virtual-machines" }],
+  }).itemListElement[0].url, "https://spluca.org/blog/micro-virtual-machines");
+});
+
 test("absoluteUrl normalizes site paths without trailing slashes", () => {
   assert.equal(absoluteUrl("/blog/example"), "https://spluca.org/blog/example");
   assert.equal(absoluteUrl("/"), "https://spluca.org");

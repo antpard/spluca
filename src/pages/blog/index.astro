@@ -5,7 +5,7 @@ import ArticleSnippet from "../../components/ArticleSnippet.astro";
 import Section from "../../components/common/Section.astro";
 import { articles } from "../../lib/list";
 import Seo from "../../components/Seo.astro";
-import { breadcrumbSchema, collectionPageSchema } from "../../lib/seo";
+import { breadcrumbSchema, collectionPageSchema, itemListSchema } from "../../lib/seo";
 
 ---
 
@@ -20,6 +20,14 @@ import { breadcrumbSchema, collectionPageSchema } from "../../lib/seo";
           name: GLOBAL.blogTitle,
           description: GLOBAL.blogLongDescription,
           path: "/blog",
+        }),
+        itemListSchema({
+          name: GLOBAL.blogTitle,
+          path: "/blog",
+          items: articles.map(({ title, filename }) => ({
+            title,
+            filename: filename.replace("/blog/", ""),
+          })),
         }),
         breadcrumbSchema([
           { name: GLOBAL.username, path: "/" },
