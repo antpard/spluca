@@ -23,7 +23,7 @@ import ThemeToggle from "./ThemeToggle.astro";
     </button>
   </div>
   <nav
-    class="zag-bg zag-border-b zag-transition fixed sm:relative inset-x-0 top-0 h-auto sm:px-4 flex justify-between flex-col gap-8 py-4 text-xl sm:flex-row max-w-2xl mx-auto sm:pt-4 sm:border-none"
+    class="zag-bg zag-border-b zag-transition fixed sm:relative inset-x-0 top-0 h-auto sm:px-4 flex justify-between flex-col gap-8 py-4 text-xl sm:flex-row max-w-2xl mx-auto sm:pt-4 sm:border-none -translate-y-full sm:translate-y-0"
   >
     <div
       class="flex flex-col font-mono font-medium gap-4 sm:flex-row px-4 sm:px-0 mt-16 sm:mt-0"
@@ -71,12 +71,10 @@ import ThemeToggle from "./ThemeToggle.astro";
 
   function updateNavState() {
     const isMobile = window.matchMedia("(max-width: 640px)").matches;
-    if (isMobile) {
-      nav!.style.transform = isOpen ? "translateY(0)" : "translateY(-100%)";
-    } else {
-      nav!.style.transform = "translateY(0)";
+    if (!isMobile) {
       isOpen = false;
     }
+    nav?.classList.toggle("-translate-y-full", isMobile && !isOpen);
   }
 
   function toggleNav() {
@@ -87,5 +85,4 @@ import ThemeToggle from "./ThemeToggle.astro";
   button?.addEventListener("click", toggleNav);
   window.addEventListener("resize", updateNavState);
 
-  updateNavState();
 </script>
