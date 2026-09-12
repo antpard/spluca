@@ -15,20 +15,37 @@ const { featuredProjects } = Astro.props;
   <h3 class="font-display text-lg sm:text-xl leading-loose">{GLOBAL.projectsName}</h3>
   <Anchor url="/projects" class="text-base">{GLOBAL.viewAll}</Anchor>
 </div>
+<p class="zag-muted zag-transition mt-3 max-w-2xl">
+  Systems and products built around reliable infrastructure, clear interfaces, and practical operations.
+</p>
 <ul class="my-8">
   {
-    (featuredProjects.length === 0 && <p>{GLOBAL.noProjects}</p>) ||
-      featuredProjects.map((project) => (
+    featuredProjects.length === 0 ? <p>{GLOBAL.noProjects}</p> : (
+      <>
         <li>
           <ProjectSnippet
-            title={project.title}
-            description={project.description}
-            url={project.filename}
-            githubUrl={project.githubUrl}
-            liveUrl={project.liveUrl}
-            tags={project.tags ?? []}
+            title={featuredProjects[0].title}
+            description={featuredProjects[0].description}
+            url={featuredProjects[0].filename}
+            githubUrl={featuredProjects[0].githubUrl}
+            liveUrl={featuredProjects[0].liveUrl}
+            tags={featuredProjects[0].tags ?? []}
+            featured
           />
         </li>
-      ))
+        {featuredProjects.slice(1, 3).map((project) => (
+          <li>
+            <ProjectSnippet
+              title={project.title}
+              description={project.description}
+              url={project.filename}
+              githubUrl={project.githubUrl}
+              liveUrl={project.liveUrl}
+              tags={project.tags ?? []}
+            />
+          </li>
+        ))}
+      </>
+    )
   }
 </ul>

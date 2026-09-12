@@ -165,6 +165,28 @@ test("home exposes both conversion and proof paths", async () => {
   assert.match(hero, /url="\/projects"/);
 });
 
+test("home sections have distinct service, project, and editorial hierarchy", async () => {
+  const home = await readFile("src/pages/index.astro", "utf8");
+
+  assert.ok(home.indexOf("<FeaturedServices") < home.indexOf("<FeaturedProjects"));
+  assert.ok(home.indexOf("<FeaturedProjects") < home.indexOf("<FeaturedArticles"));
+  assert.match(home, /Have a difficult system to solve/);
+  assert.match(home, /url="\/contact"/);
+});
+
+test("home previews preserve useful metadata and descriptive project actions", async () => {
+  const [articles, projects] = await Promise.all([
+    readFile("src/components/home/FeaturedArticles.astro", "utf8"),
+    readFile("src/components/ProjectSnippet.astro", "utf8"),
+  ]);
+
+  assert.match(articles, /featuredArticles\.slice\(0, 5\)/);
+  assert.match(articles, /timestamp/);
+  assert.match(articles, /duration/);
+  assert.match(projects, /View repository/);
+  assert.match(projects, /Open live product/);
+});
+
 test("faqPageSchema exposes question and answer entities", () => {
   assert.deepEqual(faqPageSchema([
     { question: "Who is this service for?", answer: "International engineering teams." },

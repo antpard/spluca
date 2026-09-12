@@ -10,12 +10,13 @@ export type Props = {
   duration?: string;
   timestamp?: string;
   tags?: string[];
+  featured?: boolean;
 };
 
-const { title, description, url, duration, timestamp, tags } = Astro.props;
+const { title, description, url, duration, timestamp, tags, featured = false } = Astro.props;
 ---
 
-<div class="zag-text zag-transition flex flex-col gap-3 pb-8">
+<div class:list={["zag-text zag-transition flex flex-col gap-3 pb-8", featured && "zag-featured-item"]}>
   <Anchor url={url} class="text-xl">
     {title}
   </Anchor>

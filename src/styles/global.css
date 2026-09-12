@@ -192,6 +192,12 @@
     color: var(--color-red-400);
   }
 
+  .zag-featured-item {
+    border-bottom: var(--zag-stroke) solid currentColor;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
   html.dark .astro-code {
     background-color: var(--shiki-dark-bg, #0d1117) !important;
     color: var(--shiki-dark, var(--color-zag-light)) !important;
