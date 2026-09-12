@@ -237,6 +237,24 @@ test("services page contains useful questions and answers", async () => {
   assert.match(page, /href="\/contact"/);
 });
 
+test("contact page explains how to start a conversation", async () => {
+  const page = await readFile("src/pages/contact.astro", "utf8");
+
+  assert.match(page, /Email Antonio/);
+  assert.match(page, /What to include/);
+  assert.match(page, /What happens next/);
+  assert.match(page, /mailto:apardo@spluca\.org/);
+  assert.match(page, /WhatsApp/);
+});
+
+test("service details expose a clear summary and return path", async () => {
+  const layout = await readFile("src/layouts/ServiceLayout.astro", "utf8");
+
+  assert.match(layout, /url="\/services"/);
+  assert.match(layout, /frontmatter\.description/);
+  assert.match(layout, /zag-cta-primary/);
+});
+
 test("older articles have specific metadata and internal discovery links", async () => {
   const [microvms, grpc, knative, axum] = await Promise.all([
     readFile("src/pages/blog/micro-virtual-machines.md", "utf8"),

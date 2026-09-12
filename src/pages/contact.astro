@@ -26,13 +26,36 @@ import { breadcrumbSchema, contactPageSchema } from "../lib/seo";
     <div class="flex items-center gap-4 pt-8 pb-16">
       <h1 class="font-mono text-3xl sm:text-4xl leading-loose">{GLOBAL.contactTitle}</h1>
     </div>
-    <div class="flex flex-col gap-8">
-      <p class="zag-text zag-transition text-lg">
-        Interested in discussing my projects, exploring collaboration opportunities, or looking for professional services? I'd love to hear from you. Drop me a line at <a href="mailto:apardo@spluca.org" class="text-red-400 hover:underline">apardo@spluca.org</a>  and I'll get back to you as soon as possible.
-      </p>
-      <p class="zag-text zag-transition text-lg">
-        You can also chat with me via WhatsApp or talk on the phone at <a href="https://wa.me/34639463350" class="text-red-400 hover:underline">+34 639 463 350</a>.
-      </p>
+    <div class="flex flex-col gap-12">
+      <div class="flex flex-col gap-5">
+        <p class="zag-text zag-transition text-lg">
+          Tell me what you are building, where the system is getting difficult, and what a better outcome would look like. I work remotely with international teams on cloud, backend, Linux, Kubernetes, and platform engineering problems.
+        </p>
+        <a href="mailto:apardo@spluca.org" class="zag-cta-primary w-fit">Email Antonio</a>
+      </div>
+      <div class="flex flex-col gap-4">
+        <h2 class="font-mono text-xl sm:text-2xl leading-loose">What to include</h2>
+        <ul class="list-disc pl-6 flex flex-col gap-3">
+          <li>What you are building and who operates it.</li>
+          <li>The current constraint, incident, or delivery bottleneck.</li>
+          <li>Your timeline, technical constraints, and desired outcome.</li>
+        </ul>
+      </div>
+      <div class="flex flex-col gap-4">
+        <h2 class="font-mono text-xl sm:text-2xl leading-loose">What happens next</h2>
+        <ol class="list-decimal pl-6 flex flex-col gap-3">
+          <li>I review the context and reply with focused questions or an initial direction.</li>
+          <li>We identify the highest-value next step and the right scope.</li>
+          <li>We agree on a practical discovery or implementation engagement.</li>
+        </ol>
+      </div>
+      <div class="flex flex-col gap-4">
+        <h2 class="font-mono text-xl sm:text-2xl leading-loose">Prefer a quick conversation?</h2>
+        <p class="zag-text zag-transition text-lg">
+          You can also reach me on <a href="https://wa.me/34639463350" class="text-red-400 hover:underline" target="_blank" rel="noopener noreferrer">WhatsApp</a> or by phone at <a href="tel:+34639463350" class="text-red-400 hover:underline">+34 639 463 350</a>.
+        </p>
+      </div>
+      <p class="zag-muted zag-transition">I usually start by understanding the system and constraints before suggesting a solution.</p>
     </div>
   </Section>
 </Layout>
