@@ -53,6 +53,7 @@ test("primary navigation exposes accessible menu state and active routes", async
 
   assert.match(header, /aria-expanded="false"/);
   assert.match(header, /aria-controls="primary-navigation"/);
-  assert.match(header, /aria-current=\{isActive \? "page"/);
+  assert.match(header, /aria-current=\{isActive\(url\) \? "page"/);
   assert.match(header, /url="\/"/);
+  assert.match(header, /filter\(\(\[label\]\) => label !== "home" && label !== "contact"\)/);
 });

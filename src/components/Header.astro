@@ -2,6 +2,9 @@
 import { GLOBAL } from "../lib/variables";
 import Anchor from "./common/Anchor.astro";
 import ThemeToggle from "./ThemeToggle.astro";
+
+const isActive = (url: string) => Astro.url.pathname === url || (url !== "/" && Astro.url.pathname.startsWith(`${url}/`));
+const navigationEntries = Object.entries(GLOBAL.menu).filter(([label]) => label !== "home" && label !== "contact");
 ---
 
 <header
@@ -36,13 +39,12 @@ import ThemeToggle from "./ThemeToggle.astro";
       class="flex flex-col font-mono font-medium gap-4 sm:flex-row px-4 sm:px-0 mt-16 sm:mt-0"
     >
       <Anchor url="/" class="font-display text-base">SPLUCA</Anchor>
-      {Object.entries(GLOBAL.menu).map(([label, url]) => {
-        const isActive = Astro.url.pathname === url || (url !== "/" && Astro.url.pathname.startsWith(`${url}/`));
-        return <Anchor url={url} class:list={[isActive && "zag-nav-active"]} aria-current={isActive ? "page" : undefined}>{label}</Anchor>;
-      })}
+      {navigationEntries.map(([label, url]) => (
+        <Anchor url={url} class={isActive(url) ? "zag-nav-active" : undefined} aria-current={isActive(url) ? "page" : undefined}>{label}</Anchor>
+      ))}
     </div>
     <div class="flex gap-4 justify-between px-4 sm:px-0">
-        <Anchor url="/contact" class="zag-cta-primary text-base">Contact</Anchor>
+        <Anchor url="/contact" class="zag-cta-primary text-base" aria-current={isActive("/contact") ? "page" : undefined}>Contact</Anchor>
         <Anchor url="https://spluca.org/rss.xml" aria-label="RSS Feed">
           <svg
             xmlns="http://www.w3.org/2000/svg"
