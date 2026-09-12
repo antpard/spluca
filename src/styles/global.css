@@ -152,6 +152,46 @@
 }
 
 @layer components {
+  .zag-cta-primary,
+  .zag-cta-secondary {
+    align-items: center;
+    display: inline-flex;
+    font-weight: 600;
+    min-height: 44px;
+    padding: 0.625rem 1rem;
+    text-underline-offset: var(--zag-offset);
+  }
+
+  .zag-cta-primary {
+    background-color: var(--color-red-600);
+    color: var(--color-neutral-100);
+  }
+
+  .dark .zag-cta-primary {
+    background-color: var(--color-red-400);
+    color: var(--color-neutral-900);
+  }
+
+  .zag-cta-primary:hover,
+  .zag-cta-primary:focus-visible {
+    background-color: var(--color-red-700);
+  }
+
+  .dark .zag-cta-primary:hover,
+  .dark .zag-cta-primary:focus-visible {
+    background-color: var(--color-red-300);
+  }
+
+  .zag-cta-secondary {
+    border: var(--zag-stroke) solid currentColor;
+  }
+
+  .zag-cta-secondary:hover,
+  .zag-cta-secondary:focus-visible,
+  .zag-nav-active {
+    color: var(--color-red-400);
+  }
+
   html.dark .astro-code {
     background-color: var(--shiki-dark-bg, #0d1117) !important;
     color: var(--shiki-dark, var(--color-zag-light)) !important;

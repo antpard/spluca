@@ -31,3 +31,19 @@ test("mobile navigation starts hidden in CSS", async () => {
   assert.match(header, /-translate-y-full sm:translate-y-0/);
   assert.doesNotMatch(header, /nav!\.style\.transform/);
 });
+
+test("shared personal hub CTA styles are defined", async () => {
+  const styles = await readFile("src/styles/global.css", "utf8");
+
+  assert.match(styles, /\.zag-cta-primary/);
+  assert.match(styles, /\.zag-cta-secondary/);
+  assert.match(styles, /\.zag-nav-active/);
+});
+
+test("personal hub conversion copy is centralized", async () => {
+  const variables = await readFile("src/lib/variables.ts", "utf8");
+
+  assert.match(variables, /heroEyebrow:/);
+  assert.match(variables, /heroPrimaryCta:/);
+  assert.match(variables, /heroSecondaryCta:/);
+});
