@@ -82,6 +82,21 @@ test("all headings use the hero's readable font", async () => {
   sources.forEach((source) => assert.doesNotMatch(source, /<h[1-6][^>]*font-display/));
 });
 
+test("home section headings and collection links are accessible", async () => {
+  const [services, projects, articles] = await Promise.all([
+    readFile("src/components/home/FeaturedServices.astro", "utf8"),
+    readFile("src/components/home/FeaturedProjects.astro", "utf8"),
+    readFile("src/components/home/FeaturedArticles.astro", "utf8"),
+  ]);
+
+  assert.match(services, /<h2[^>]*>\{GLOBAL\.servicesName\}<\/h2>/);
+  assert.match(projects, /<h2[^>]*>\{GLOBAL\.projectsName\}<\/h2>/);
+  assert.match(articles, /<h2[^>]*>\{GLOBAL\.articlesName\}<\/h2>/);
+  assert.match(services, />View all services<\/Anchor>/);
+  assert.match(projects, />View all projects<\/Anchor>/);
+  assert.match(articles, />View all articles<\/Anchor>/);
+});
+
 test("home hero aligns the avatar to the top of the text block on desktop", async () => {
   const hero = await readFile("src/components/home/Hero.astro", "utf8");
 
