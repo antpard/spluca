@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/ProjectLayout.astro
 title: Mikrom
-description: Rust-first edge platform for deploying containerized workloads into isolated Firecracker or Cloud Hypervisor microVMs.
+description: Rust-first edge platform exploring how to deploy containerized workloads into isolated Firecracker or Cloud Hypervisor microVMs.
 tags: ["Rust", "MicroVMs", "Firecracker", "Cloudflare", "Dagger"]
 liveUrl: https://mikrom.spluca.org
 githubUrl:
@@ -10,11 +10,11 @@ timestamp: "2026-08-29"
 filename: mikrom
 ---
 
-Mikrom is an open-source, Rust-first edge platform for deploying containerized workloads into lightweight Firecracker or Cloud Hypervisor microVMs. It combines a PaaS workflow with a self-hostable execution plane: source repositories become OCI images, images are scheduled onto workers, workloads run in isolated VMs, and external traffic reaches them through a Pingora-based router.
+Mikrom is an open-source, Rust-first edge platform exploring how to deploy containerized workloads into Firecracker or Cloud Hypervisor microVMs. It combines a PaaS workflow with a self-hostable execution plane: source repositories become OCI images, images are scheduled onto workers, workloads run in isolated VMs, and external traffic can reach them through a Pingora-based router.
 
 ## What the repository includes
 
-The workspace is a complete platform rather than a single backend service:
+The workspace is a broad platform project rather than a single backend service:
 
 - `mikrom-api`: Axum control plane for authentication, tenants and projects, applications, deployments, secrets, PATs, audit logs, GitHub webhooks, billing, and database provisioning.
 - `mikrom-app`: SvelteKit dashboard for deployments, logs, metrics, scaling, snapshots, storage, databases, networking, notifications, and account settings.

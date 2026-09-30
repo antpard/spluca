@@ -63,10 +63,29 @@ test("services page contains international positioning and internal conversion l
   const page = await readFile("src/pages/services/index.astro", "utf8");
 
   assert.match(page, /Cloud, Backend &(?:amp;|&) Linux Engineering Services/);
-  assert.match(page, /Why work with me/);
+  assert.match(page, /Where I can contribute/);
   assert.match(page, /href="\/projects"/);
   assert.match(page, /href="\/blog"/);
   assert.match(page, /href="\/contact"/);
+});
+
+test("core pages use grounded, collaborative positioning", async () => {
+  const [variables, about, services, projects, backend, linux] = await Promise.all([
+    readFile("src/lib/variables.ts", "utf8"),
+    readFile("src/pages/about.astro", "utf8"),
+    readFile("src/pages/services/index.astro", "utf8"),
+    readFile("src/pages/projects/index.astro", "utf8"),
+    readFile("src/pages/services/backend-development.md", "utf8"),
+    readFile("src/pages/services/linux-system-administration.md", "utf8"),
+  ]);
+
+  assert.match(variables, /I help teams make sense of complex systems\./);
+  assert.match(about, /I work on cloud infrastructure, Linux platforms, backend services, and developer tools, drawing on nearly 25 years of experience across those areas\./);
+  assert.match(services, /I work with international teams on cloud infrastructure, backend systems, Linux, Kubernetes, and platform engineering problems\./);
+  assert.match(projects, /Projects and systems I have worked on, with an emphasis on learning, reliability, and practical operations\./);
+  assert.doesNotMatch(services, /Why work with me/);
+  assert.doesNotMatch(backend, /blazing-fast|\*\*Best for:\*\*/);
+  assert.doesNotMatch(linux, /\*\*Best for:\*\*/);
 });
 
 test("services include focused Kubernetes work without duplicate backend pages", async () => {
@@ -346,7 +365,7 @@ test("service metadata matches high-intent international searches", async () => 
     readFile("src/pages/services/linux-system-administration.md", "utf8"),
   ]);
 
-  assert.match(cloud, /cloud infrastructure consulting/);
+  assert.match(cloud, /Cloud infrastructure consulting/);
   assert.match(kubernetes, /Kubernetes platform consulting/);
   assert.match(backend, /Backend development for international teams/);
   assert.match(linux, /Linux server hardening/);

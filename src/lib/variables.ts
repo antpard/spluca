@@ -4,14 +4,14 @@ export const GLOBAL = {
   // Site metadata
   username: "Antonio Pardo Sánchez",
   rootUrl: "https://spluca.org",
-  shortDescription: "Platform Architect | Cloud, Linux, Rust, Kubernetes, and MicroVM Systems",
+  shortDescription: "Platform architecture, cloud, Linux, Rust, Kubernetes, and microVM systems",
   longDescription:
-    "Antonio Pardo Sánchez is a platform architect and systems engineer with nearly 25 years of experience designing cloud infrastructure, Linux platforms, backend systems, Kubernetes services, and microVM-based products.",
+    "Antonio Pardo Sánchez works on cloud infrastructure, Linux platforms, backend systems, Kubernetes services, and microVM-based products, drawing on nearly 25 years of experience.",
   heroEyebrow: "Platform architect · Systems engineer",
-  heroTitle: "I build reliable platforms for teams shipping hard software.",
+  heroTitle: "I help teams make sense of complex systems.",
   heroDescription:
-    "Cloud infrastructure, backend systems, Linux, Kubernetes, and microVMs — from architecture to production.",
-  heroProof: "Nearly 25 years · Remote international work · Cloud to production",
+    "Cloud infrastructure, backend systems, Linux, Kubernetes, and microVMs — from architecture through day-to-day operation.",
+  heroProof: "Nearly 25 years of experience · Remote collaboration · Practical systems work",
   heroPrimaryCta: "Discuss your system",
   heroSecondaryCta: "Explore projects",
 
@@ -34,20 +34,20 @@ export const GLOBAL = {
   noExperiences: "No featured experiences yet.",
 
   // Blog metadata
-  blogTitle: "My Thoughts & Takes",
-  blogShortDescription: "Practical wisdom, unfiltered thoughts, and hot takes.",
+  blogTitle: "Technical Notes",
+  blogShortDescription: "Notes from working on infrastructure and software systems.",
   blogLongDescription:
     "Technical articles on cloud architecture, Linux systems, Rust, Kubernetes, Firecracker, microVMs, backend engineering, and open source platform development.",
 
   // Project metadata
   projectTitle: "Projects and Code",
-  projectShortDescription: "A list of my projects.",
+  projectShortDescription: "Projects and systems I have worked on.",
   projectLongDescription:
     "Open source and product engineering projects by Antonio Pardo Sánchez, including cloud platforms, backend services, infrastructure tooling, and microVM systems.",
 
   // Service metadata
   serviceTitle: "Cloud Architecture, Backend & Linux Services",
-  serviceShortDescription: "A list of my services.",
+  serviceShortDescription: "Ways I can contribute to infrastructure and backend work.",
   serviceLongDescription:
     "Remote cloud architecture, backend development, Linux administration, Kubernetes, and infrastructure consulting for international teams.",
 

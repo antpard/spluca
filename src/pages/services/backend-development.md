@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/ServiceLayout.astro
 title: "Backend Development — Ruby, Go & Rust"
-description: "Backend development for international teams using Ruby on Rails, Go, and Rust. Build reliable APIs and services for faster delivery, clearer operations, and systems-level performance where it matters."
+description: "Backend development for international teams using Ruby on Rails, Go, and Rust. Improve APIs and services while keeping delivery, operations, and performance in view."
 tags: ["Ruby", "Go", "Rust", "Backend", "APIs", "Microservices"]
 featured: true
 timestamp: "2026-04-05"
@@ -10,11 +10,11 @@ filename: "backend-development"
 
 ## Overview
 
-I help international teams replace slow delivery, unreliable integrations, or difficult-to-change services with robust backends that fit their actual constraints. I choose the right language for the job: rapid development with Ruby, concurrent services with Go, or systems-level control with Rust.
+I work with international teams on slow delivery, unreliable integrations, or difficult-to-change services. The approach depends on the constraints: Ruby can help with fast iteration, Go with straightforward concurrent services, and Rust with systems-level control where it is useful.
 
 ## Ruby
 
-**Best for:** Rapid prototyping, CRUD applications, startups, and teams that value developer happiness.
+**Often a good fit for:** Rapid prototyping, CRUD applications, startups, and teams that value developer happiness.
 
 - **Ruby on Rails** — Full-stack web applications with convention over configuration
 - **API development** — RESTful and GraphQL APIs with Grape or Rails API
@@ -24,7 +24,7 @@ I help international teams replace slow delivery, unreliable integrations, or di
 
 ## Go
 
-**Best for:** High-throughput microservices, cloud-native tools, and concurrent systems.
+**Often a good fit for:** High-throughput microservices, cloud-native tools, and concurrent systems.
 
 - **Microservices** — Lightweight, fast-starting services with Gin, Chi, or net/http
 - **gRPC & Protocol Buffers** — Efficient service-to-service communication
@@ -34,9 +34,9 @@ I help international teams replace slow delivery, unreliable integrations, or di
 
 ## Rust
 
-**Best for:** Systems programming, performance-critical paths, and safety-first applications.
+**Often a good fit for:** Systems programming, performance-critical paths, and safety-first applications.
 
-- **Web services** — Axum and Actix Web for blazing-fast HTTP servers
+- **Web services** — Axum and Actix Web for asynchronous HTTP servers
 - **Async runtimes** — Tokio-based concurrent systems
 - **Embedded & edge** — Resource-constrained environments and WebAssembly
 - **Safety-critical code** — Memory safety without garbage collection
@@ -45,7 +45,7 @@ I help international teams replace slow delivery, unreliable integrations, or di
 ## How I Work
 
 1. **Requirements analysis** — Understand the problem domain and constraints
-2. **Technology selection** — Choose the right language and framework for the use case
+2. **Technology selection** — Choose a language and framework that fit the use case
 3. **Architecture design** — Define service boundaries, data models, and APIs
 4. **Iterative development** — Ship working software early and often
 5. **Testing & observability** — Comprehensive test coverage, logging, metrics, and tracing

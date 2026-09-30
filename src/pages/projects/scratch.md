@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/ProjectLayout.astro
 title: Scratch
-description: Web-scraping operations platform with a Next.js dashboard, Rust services, AI-assisted extraction, and an opt-in residential proxy network.
+description: Web-scraping operations platform exploring a Next.js dashboard, Rust services, AI-assisted extraction, and an opt-in residential proxy network.
 tags: ["Rust", "Next.js", "Web Scraping", "MCP", "PostgreSQL"]
 githubUrl:
 liveUrl: https://scratch.spluca.org/
@@ -10,7 +10,7 @@ timestamp: "2026-08-29"
 filename: scratch
 ---
 
-Scratch is an open-source web-scraping operations platform for defining, running, monitoring, and exporting structured data extraction jobs. It combines a Next.js operations dashboard with a Rust/Axum API, a NATS JetStream worker, and an opt-in residential proxy network. The same platform is available through the web UI, REST API, typed SDKs, and an MCP server for AI agents.
+Scratch is an open-source web-scraping operations platform for defining, running, monitoring, and exporting structured data extraction jobs. It brings together a Next.js operations dashboard, a Rust/Axum API, a NATS JetStream worker, and an opt-in residential proxy network. The project can be used through a web UI, REST API, typed SDKs, and an MCP server for AI agents.
 
 ## What the repository includes
 

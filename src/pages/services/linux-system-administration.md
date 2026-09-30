@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/ServiceLayout.astro
 title: "Linux System Administration"
-description: "Linux server hardening, administration, and incident-focused support for Red Hat and Debian-based systems. Improve security, networking, patching, and reliability across VPS, cloud, and bare-metal infrastructure."
+description: "Linux server hardening, administration, and incident-focused support for Red Hat and Debian-based systems. Work through security, networking, patching, and reliability concerns across VPS, cloud, and bare-metal infrastructure."
 tags: ["Linux", "SysAdmin", "Red Hat", "Debian", "Security", "Networking"]
 featured: true
 timestamp: "2026-04-07"
@@ -10,11 +10,11 @@ filename: "linux-system-administration"
 
 ## Overview
 
-I help teams facing security gaps, recurring incidents, or unclear operational ownership regain control of their Linux infrastructure. I manage and optimize systems from the kernel up, from a handful of VPS instances to a fleet of bare-metal servers, across both Red Hat and Debian ecosystems.
+I work with teams facing security gaps, recurring incidents, or unclear operational ownership in their Linux infrastructure. The work can range from a few VPS instances to bare-metal servers across Red Hat and Debian ecosystems, depending on the situation.
 
 ## Red Hat Ecosystem
 
-**Best for:** Enterprise environments, compliance-driven workloads, and organizations that need long-term stability with commercial support.
+**Often a good fit for:** Enterprise environments, compliance-driven workloads, and organizations that need long-term stability with commercial support.
 
 - **RHEL, AlmaLinux & Rocky Linux** — Installation, configuration, and lifecycle management
 - **DNF/YUM** — Package management, repository configuration, and module streams
@@ -25,7 +25,7 @@ I help teams facing security gaps, recurring incidents, or unclear operational o
 
 ## Debian Ecosystem
 
-**Best for:** Community-driven projects, web servers, containers, and teams that value flexibility and a vast package ecosystem.
+**Often a good fit for:** Community-driven projects, web servers, containers, and teams that value flexibility and a broad package ecosystem.
 
 - **Debian & Ubuntu** — LTS releases, point upgrades, and minimal installs
 - **APT** — Package management, PPAs, pinning, and local mirrors
