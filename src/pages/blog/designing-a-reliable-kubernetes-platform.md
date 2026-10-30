@@ -49,4 +49,4 @@ Avoid hiding important behavior behind a growing collection of operators. Every 
 
 A practical first version can provide a small number of deployment patterns, consistent health checks, resource policies, logs and metrics, a tested rollback process, and clear runbooks. Expand it only when a repeated workload or operational problem justifies the next capability.
 
-For teams that need help with this work, see my [Kubernetes platform engineering service](/services/kubernetes-platform-engineering) and the [Mikrom platform case study](/projects/mikrom). I also provide [cloud architecture and infrastructure consulting](/services/cloud-architecture) for teams evaluating their current platform.
+For teams that need help with this work, see my [Kubernetes platform engineering service](/services/kubernetes-platform-engineering). I also provide [cloud architecture and infrastructure consulting](/services/cloud-architecture) for teams evaluating their current platform.

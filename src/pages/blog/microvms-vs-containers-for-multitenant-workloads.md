@@ -41,4 +41,4 @@ Many platforms do not need one answer for every workload. Containers can serve t
 
 That model requires clear boundaries between image building, scheduling, networking, runtime lifecycle, and traffic routing. It also requires tests for deletion, recovery, resource limits, and cross-tenant access—not just a successful first boot.
 
-The [Mikrom project](/projects/mikrom) explores this model with Firecracker and Cloud Hypervisor. For implementation support, see my [cloud architecture and infrastructure service](/services/cloud-architecture) or [Kubernetes platform engineering service](/services/kubernetes-platform-engineering).
+For implementation support, see my [cloud architecture and infrastructure service](/services/cloud-architecture) or [Kubernetes platform engineering service](/services/kubernetes-platform-engineering).

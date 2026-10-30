@@ -771,4 +771,4 @@ Whether you're building microservices, mobile backends, or real-time application
 
 Happy coding! 🚀
 
-For production API work, see my [backend development service](/services/backend-development) and the [Mikrom project](/projects/mikrom), which uses typed service boundaries across its platform components.
+For production API work, see my [backend development service](/services/backend-development).

@@ -9,7 +9,7 @@ timestamp: 2026-08-23T18:00:00+02:00
 filename: log-of-a-week-of-work-on-scratch
 ---
 
-Seven days, 294 commits, 391 files touched, roughly 82,000 lines added against 9,700 removed. That is not a headline feature announcement, it is a log — the kind of week where a scraping platform stops being a demo of the happy path and starts absorbing the failure modes that only show up once real targets fight back. This post walks through what actually landed on [Scratch](/projects/scratch) this week, grouped by the problem each change was solving.
+Seven days, 294 commits, 391 files touched, roughly 82,000 lines added against 9,700 removed. That is not a headline feature announcement, it is a log — the kind of week where a scraping platform stops being a demo of the happy path and starts absorbing the failure modes that only show up once real targets fight back. This post walks through what actually landed on Scratch this week, grouped by the problem each change was solving.
 
 ## 🧠 Extraction stops being all-or-nothing
 

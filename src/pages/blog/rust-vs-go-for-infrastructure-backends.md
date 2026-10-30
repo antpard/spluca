@@ -45,4 +45,4 @@ There is no requirement to use one language for every component. A Go controller
 
 The cost of this approach is additional interfaces, tooling, and operational knowledge. Keep the boundary small, document it, and test compatibility as part of delivery.
 
-My [backend development service](/services/backend-development) covers Rust, Go, APIs, and systems software. The [Mikrom project](/projects/mikrom) shows this kind of platform-oriented architecture in practice, while [understanding gRPC and Protocol Buffers](/blog/understanding-grpc-and-protocol-buffers) provides more background on typed service contracts.
+My [backend development service](/services/backend-development) covers Rust, Go, APIs, and systems software. [Understanding gRPC and Protocol Buffers](/blog/understanding-grpc-and-protocol-buffers) provides more background on typed service contracts.
