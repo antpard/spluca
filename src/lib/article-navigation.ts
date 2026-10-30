@@ -6,6 +6,7 @@ export type ArticleNavigationEntry = {
 };
 
 export const articleNavigation: ArticleNavigationEntry[] = [
+  { slug: "rustbox-agentic-ai-use-cases", title: "The Best Use Cases for RustBox in Agentic AI Systems", timestamp: "2026-10-25T10:00:00+02:00", tags: ["rustbox", "agentic-ai", "sandboxing", "firecracker", "multi-tenancy", "infrastructure"] },
   { slug: "microvms-vs-containers-for-multitenant-workloads", title: "MicroVMs vs Containers for Multi-Tenant Workloads", timestamp: "2026-09-12T10:10:00+00:00", tags: ["microvms", "containers", "firecracker", "cloud", "security", "multi-tenancy"] },
   { slug: "rust-vs-go-for-infrastructure-backends", title: "Rust vs Go for Infrastructure Backends", timestamp: "2026-09-12T10:05:00+00:00", tags: ["rust", "go", "backend", "systems", "infrastructure"] },
   { slug: "designing-a-reliable-kubernetes-platform", title: "Designing a Reliable Kubernetes Platform for Small Teams", timestamp: "2026-09-12T10:00:00+00:00", tags: ["kubernetes", "platform-engineering", "devops", "observability", "infrastructure"] },
