@@ -163,7 +163,7 @@
   }
 
   .zag-cta-primary {
-    background-color: var(--color-red-600);
+    background-color: var(--color-red-700);
     color: var(--color-neutral-100);
   }
 
@@ -174,7 +174,7 @@
 
   .zag-cta-primary:hover,
   .zag-cta-primary:focus-visible {
-    background-color: var(--color-red-700);
+    background-color: var(--color-red-800);
   }
 
   .dark .zag-cta-primary:hover,
@@ -189,6 +189,12 @@
   .zag-cta-secondary:hover,
   .zag-cta-secondary:focus-visible,
   .zag-nav-active {
+    color: var(--color-red-700);
+  }
+
+  .dark .zag-cta-secondary:hover,
+  .dark .zag-cta-secondary:focus-visible,
+  .dark .zag-nav-active {
     color: var(--color-red-400);
   }
 
