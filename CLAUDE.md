@@ -13,7 +13,7 @@ pnpm preview   # Build + run locally with wrangler dev
 
 ## Architecture
 
-**Astro 5 + Tailwind CSS 4 + MDX**, deployed as a Cloudflare Worker via `@astrojs/cloudflare`. The site is served at `apardo.spluca.org` / `spluca.org`.
+**Astro 5 + Tailwind CSS 4 + MDX**, deployed as a Cloudflare Worker via `@astrojs/cloudflare`. The site is served at `spluca.org` (the canonical host); `www.spluca.org` and `apardo.spluca.org` both 301-redirect to it.
 
 ### Content model
 
@@ -33,7 +33,7 @@ Required frontmatter fields:
 
 ### Deployment
 
-`wrangler.jsonc` configures the Cloudflare Worker. The site uses Smart Placement and has observability (logs + traces) enabled. Routes cover `spluca.org`, `www.spluca.org`, and `apardo.spluca.org`.
+`wrangler.jsonc` configures the Cloudflare Worker. The site uses Smart Placement and has observability (logs + traces) enabled. Routes cover `spluca.org`, `www.spluca.org`, and `apardo.spluca.org` — all three stay as custom domains so the DNS records exist, but only `spluca.org` reaches the Worker. `www.spluca.org` and `apardo.spluca.org` are 301-redirected to `spluca.org` by zone-level Cloudflare Redirect Rules (`www-to-root-domain`, `apardo-domain-to-root`), which run before Workers and are configured in the Cloudflare dashboard, not in this repo.
 
 ### Assets & performance
 
